@@ -1,0 +1,97 @@
+/* ============================================================
+   COOKIE CONSENT — barra rectangular full-width al pie
+   ============================================================ */
+.cookie-bar{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:9996;
+  width:100%;
+  background:var(--dark);
+  color:var(--bone);
+  border-top:1px solid rgba(255,255,255,.1);
+  box-shadow:0 -16px 40px -22px rgba(0,0,0,.7);
+  animation:cookieUp .5s var(--ease-out) both;
+}
+@keyframes cookieUp{
+  from{transform:translateY(100%)}
+  to{transform:translateY(0)}
+}
+
+.cookie-bar__inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:20px 30px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+}
+
+.cookie-bar__title{
+  display:block;
+  font-family:'Fraunces',serif;
+  font-size:1.05rem;
+  color:var(--bone);
+  margin-bottom:.25rem;
+}
+.cookie-bar__text p{
+  margin:0;
+  font-size:.92rem;
+  line-height:1.5;
+  color:var(--muted-d);
+  max-width:760px;
+}
+.cookie-bar__link{
+  color:var(--logo);
+  text-decoration:underline;
+  text-underline-offset:3px;
+  white-space:nowrap;
+}
+.cookie-bar__link:hover{color:var(--bone)}
+
+.cookie-bar__actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex:none;
+}
+.cookie-bar__btn{
+  padding:.75rem 1.5rem;
+  font-size:.9rem;
+  white-space:nowrap;
+}
+/* "Aceptar todas" es oscuro: borde claro para que contraste sobre la barra negra */
+.cookie-bar__btn.btn-primary{
+  border-color:rgba(255,255,255,.55);
+}
+.cookie-bar__btn.btn-primary:hover{
+  border-color:rgba(255,255,255,.85);
+}
+.cookie-bar__btn--ghost{
+  background:var(--bone);
+  color:var(--dark);
+  border-color:var(--bone);
+}
+.cookie-bar__btn--ghost:hover{
+  background:var(--bone-2);
+  border-color:var(--bone-2);
+  transform:translateY(-3px);
+}
+
+@media (max-width:760px){
+  .cookie-bar__inner{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+    padding:18px 22px;
+  }
+  .cookie-bar__actions{
+    width:100%;
+  }
+  .cookie-bar__btn{
+    flex:1;
+    justify-content:center;
+  }
+}

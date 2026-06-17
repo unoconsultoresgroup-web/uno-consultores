@@ -1,0 +1,11 @@
+/* ---------- 15. FAQ ---------- */
+#faq{background:var(--white);padding:64px 0 48px}
+.faq{max-width:840px;margin:24px auto 0}
+.q{background:var(--card);border:1px solid var(--sand);border-radius:15px;margin-bottom:14px;overflow:hidden;transition:.3s}
+.q.open{border-color:var(--wine);box-shadow:0 14px 30px -20px rgba(156,16,38,.5)}
+.q button{width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:18px;font-family:'Hanken Grotesk';font-weight:600;font-size:1.05rem;color:var(--dark)}
+.q .ic{flex:none;width:28px;height:28px;border-radius:50%;background:var(--bone-2);display:grid;place-items:center;transition:.3s;color:var(--wine);font-size:1.3rem}
+.q.open .ic{transform:rotate(45deg);background:var(--wine);color:#fff}
+.q .a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+.q.open .a{max-height:500px}
+.q .a p{padding:0 26px 24px;color:var(--muted);font-size:.96rem}

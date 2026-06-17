@@ -1,0 +1,77 @@
+/* ---------- NOSOTROS (sección about) ---------- */
+#nosotros{background:linear-gradient(180deg,var(--bone) 0%,#fff 100%);padding-bottom:0}
+.about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:stretch}
+.about-lead{color:var(--muted);font-size:1.08rem;margin-bottom:28px;max-width:560px}
+.about-blocks{display:flex;flex-direction:column;gap:22px}
+.about-block{display:flex;gap:16px;align-items:center}
+/* mismo diseño que el icono de las unidades (.mi-ic) */
+.about-block .ab-ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;flex:none;background:var(--bone-2);color:var(--accent,var(--clay));transition:.3s}
+.about-block:hover .ab-ic{background:var(--accent,var(--clay));color:#fff}
+.about-block .ab-ic svg{width:24px;height:24px}
+.about-block h4{font-family:'Hanken Grotesk';font-weight:700;font-size:1.08rem;color:var(--dark);margin-bottom:2px}
+.about-block p{color:var(--muted);font-size:.94rem}
+
+/* ---------- Fundadora: banda con el mismo fondo que "Alcance global" ---------- */
+.founder-band{margin-top:44px;padding:60px 0;position:relative;overflow:hidden;color:var(--bone);
+  background:
+    radial-gradient(55% 75% at 78% 28%, color-mix(in srgb, var(--clay) 32%, transparent), transparent 70%),
+    radial-gradient(50% 65% at 12% 92%, color-mix(in srgb, var(--wine-glow) 30%, transparent), transparent 70%),
+    var(--dark-deep)}
+.founder{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.founder-quote{margin:0 auto;text-align:center;
+  font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.3rem,2.2vw,1.72rem);
+  line-height:1.45;color:var(--bone);max-width:560px}
+.founder-quote::before{content:"";display:block;width:34px;height:3px;border-radius:2px;
+  background:var(--logo);margin:0 auto 16px}
+.founder-card{margin:0;justify-self:center;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;flex:none}
+.founder-photo{width:190px;height:190px;border-radius:50%;overflow:hidden;flex:none;
+  border:1px solid rgba(245,241,232,.25);
+  box-shadow:0 22px 50px -18px rgba(0,0,0,.55),0 0 0 8px color-mix(in srgb,var(--logo) 18%,transparent)}
+.founder-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.founder-card figcaption{display:flex;flex-direction:column;gap:2px}
+.founder-card figcaption strong{font-family:'Hanken Grotesk';font-weight:600;font-size:1.18rem;color:var(--bone)}
+.founder-card figcaption span{font-size:.94rem;letter-spacing:.03em;color:var(--logo);font-weight:600}
+
+/* ---------- Visual: switch + imagen / 3D ---------- */
+.about-visual{display:block;height:100%}
+.about-switch{display:inline-flex;background:var(--bone-2);border:1px solid var(--sand);border-radius:100px;padding:4px;gap:4px}
+.about-switch button{border:0;cursor:pointer;background:transparent;color:var(--muted);
+  font-family:'Hanken Grotesk';font-weight:700;font-size:.82rem;letter-spacing:.04em;
+  padding:.45rem 1.1rem;border-radius:100px;transition:.25s}
+.about-switch button.on{background:var(--dark);color:#fff;box-shadow:0 8px 18px -10px rgba(0,0,0,.5)}
+
+/* imagen */
+.about-photo{position:relative;width:100%;height:100%;min-height:340px;border-radius:24px;overflow:hidden;
+  border:1px solid var(--sand);box-shadow:0 40px 80px -44px rgba(0,0,0,.5)}
+.about-photo img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .6s var(--ease)}
+.about-photo:hover img{transform:scale(1.03)}
+
+/* ---------- Orbital 3D animado (más grande, con logo) ---------- */
+.about-orbit{position:relative;width:100%;max-width:480px;aspect-ratio:1;margin:0 auto;perspective:1200px}
+.ao-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
+  width:188px;height:188px;border-radius:50%;display:grid;place-items:center;text-align:center;
+  background:var(--card);border:1px solid var(--sand);
+  box-shadow:0 30px 70px -26px rgba(0,0,0,.4),inset 0 0 0 6px rgba(0,0,0,.02)}
+.ao-core .ao-logo{width:120px;height:auto;display:block;margin:0 auto 6px}
+.ao-core small{display:block;font-size:.6rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--logo-deep);margin:0 22px;padding-top:7px;border-top:1px solid var(--sand)}
+.ao-ring{position:absolute;inset:0;transform-style:preserve-3d;animation:aoSpin 20s linear infinite}
+.about-orbit:hover .ao-ring{animation-duration:9s}
+.ao-chip{position:absolute;top:50%;left:50%;width:164px;height:58px;margin:-29px 0 0 -82px;
+  border-radius:16px;display:grid;place-items:center;backface-visibility:hidden;
+  background:linear-gradient(140deg,var(--dark-2),var(--dark));color:#fff;box-shadow:0 20px 48px -22px rgba(0,0,0,.5)}
+.ao-chip span{font-family:'Hanken Grotesk';font-weight:700;font-size:1rem;letter-spacing:.01em}
+.ao-chip:nth-child(1){transform:rotateY(0deg) translateZ(196px)}
+.ao-chip:nth-child(2){transform:rotateY(120deg) translateZ(196px)}
+.ao-chip:nth-child(3){transform:rotateY(240deg) translateZ(196px)}
+@keyframes aoSpin{from{transform:rotateY(0)}to{transform:rotateY(360deg)}}
+
+@media (max-width:980px){
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .about-visual{order:2;height:auto}
+  .about-photo{min-height:0;aspect-ratio:5/4}
+  .founder-band{margin-top:48px;padding:56px 0}
+  .founder{grid-template-columns:1fr;gap:28px;justify-items:center;text-align:center}
+  .founder-card{order:-1}
+}

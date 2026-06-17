@@ -1,0 +1,78 @@
+/* ---------- BANNER CTA (fondo claro con olas animadas) ---------- */
+.cta-banner{
+  position:relative;
+  overflow:hidden;            /* mantiene las olas dentro de la sección */
+  isolation:isolate;
+  background:transparent;
+  color:var(--ink, #222);
+}
+
+.cta-inner{
+  position:relative;
+  z-index:1;                 /* texto por encima de las olas */
+  max-width:720px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+.cta-banner h2{
+  color:var(--text, #1a1a1a);
+  font-size:clamp(2rem,4vw,3rem);
+  margin:.4rem 0 1rem;
+}
+.cta-banner p{
+  color:var(--muted, #5a5a5a);
+  font-size:1.12rem;
+  max-width:560px;
+  margin-bottom:2rem;
+}
+/* eyebrow oscuro sobre fondo claro */
+.cta-banner .eyebrow{ color:var(--text, #1a1a1a); }
+
+/* Botón visible sobre la caja blanca (texto oscuro, no blanco) */
+.cta-banner .btn-ghost{
+  color:var(--text, #1a1a1a);
+  border-color:color-mix(in srgb, #727372 40%, transparent);
+}
+.cta-banner .btn-ghost:hover{
+  background:var(--text, #1a1a1a);
+  color:#fff;
+  border-color:var(--text, #1a1a1a);
+}
+
+/* ---------- Olas (waves) — sólo abajo y pequeñas ---------- */
+.cta-waves{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:70%;                /* olas más grandes, ancladas abajo */
+  z-index:0;
+  pointer-events:none;
+}
+.cta-waves__svg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+
+/* Cada capa se mueve a distinta velocidad para dar profundidad */
+.cta-waves__parallax > use{
+  animation:cta-wave-move linear infinite;
+}
+.cta-waves__parallax > use:nth-child(1){ animation-duration:11s; animation-delay:-2s; }
+.cta-waves__parallax > use:nth-child(2){ animation-duration:15s; animation-delay:-3s; }
+.cta-waves__parallax > use:nth-child(3){ animation-duration:20s; animation-delay:-5s; }
+
+@keyframes cta-wave-move{
+  0%   { transform:translateX(-70px); }
+  50%  { transform:translateX(65px); }
+  100% { transform:translateX(-70px); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .cta-waves__parallax > use{ animation:none; }
+}

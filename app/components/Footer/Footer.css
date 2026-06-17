@@ -1,0 +1,42 @@
+/* ---------- 17. FOOTER (oscuro) ---------- */
+.footer{
+  position:relative;
+  /* background:
+    radial-gradient(90% 120% at 50% 0%,
+      color-mix(in srgb, var(--accent, var(--clay)) 42%, transparent), transparent 70%),
+    #000000; */
+
+      background:
+    radial-gradient(55% 75% at 78% 28%, color-mix(in srgb, var(--clay) 32%, transparent), transparent 70%),
+    radial-gradient(50% 65% at 12% 92%, color-mix(in srgb, var(--wine-glow) 30%, transparent), transparent 70%),
+    var(--dark-deep);
+  color:var(--bone);
+  padding:30px 0 34px;
+}
+.footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--logo) 70%,transparent),transparent)}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px;padding:46px 0;border-top:1px solid rgba(245,241,232,.14);border-bottom:1px solid rgba(245,241,232,.14)}
+.footer .brand{color:var(--bone)}
+.footer p.ab{color:var(--muted-d);font-size:.92rem;margin-top:16px;max-width:300px}
+.footer h5{font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--clay-soft);margin-bottom:16px}
+.footer ul li{margin-bottom:10px}
+.footer ul li a{color:var(--muted-d);font-size:.92rem;transition:.2s}
+.footer ul li a:hover{color:var(--bone);padding-left:4px}
+/* Sociales: íconos champagne con efecto "agua" (tamaño footer) */
+.socials{display:flex;gap:12px;margin-top:18px}
+.socials .cs-link{position:relative;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;overflow:hidden;
+  color:var(--logo);border:1.5px solid color-mix(in srgb,var(--logo) 55%,transparent);background:transparent;
+  transition:color .4s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease)}
+.socials .cs-link svg{position:relative;z-index:1;width:19px;height:19px;transition:transform .4s var(--ease)}
+.socials .cs-link::before{content:"";position:absolute;left:-12%;right:-12%;bottom:0;height:150%;z-index:0;border-radius:42% 42% 0 0;
+  background:linear-gradient(180deg,#a9e6e0,var(--logo) 45%,#2f9389);
+  transform:translateY(102%);transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.socials .cs-link:hover{color:#241814;border-color:var(--logo);transform:translateY(-3px);
+  box-shadow:0 12px 24px -12px color-mix(in srgb,var(--logo) 75%,transparent)}
+.socials .cs-link:hover::before{transform:translateY(16%)}
+.socials .cs-link:hover svg{transform:scale(1.08)}
+.footer-bottom{display:flex;justify-content:space-between;gap:18px;padding-top:24px;color:var(--muted-d);font-size:.84rem;flex-wrap:wrap}
+
+@media (max-width:680px){
+  .footer-grid{grid-template-columns:1fr}
+}

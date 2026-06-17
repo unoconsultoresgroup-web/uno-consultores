@@ -1,0 +1,96 @@
+/* ============================================================
+   COOKIE POLICY — página legal
+   ============================================================ */
+.cookie-policy{padding-top:40px}
+.cookie-policy .wrap{max-width:860px}
+
+.cookie-policy h1{
+  font-size:clamp(2.1rem,4.4vw,3.2rem);
+  margin-bottom:.6rem;
+}
+.cookie-policy h2{
+  font-size:1.45rem;
+  margin:2.4rem 0 .9rem;
+}
+.cookie-policy p{
+  color:var(--muted);
+  margin-bottom:1rem;
+}
+.cookie-policy__updated{
+  font-size:.85rem;
+  color:var(--clay-soft);
+  margin-bottom:1.6rem;
+}
+.cookie-policy__intro{
+  font-size:1.1rem;
+  color:var(--text);
+}
+.cookie-policy__mail{
+  color:var(--logo-deep);
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+/* categorías */
+.cookie-policy__cats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin:1.2rem 0 1.8rem;
+}
+.cookie-policy__cat{
+  background:var(--bone-2);
+  border:1px solid var(--sand);
+  border-radius:var(--radius-sm);
+  padding:18px 20px;
+}
+.cookie-policy__cat strong{
+  display:block;
+  font-family:'Fraunces',serif;
+  color:var(--dark);
+  margin-bottom:.4rem;
+}
+.cookie-policy__cat p{
+  font-size:.88rem;
+  margin:0;
+}
+
+/* tabla */
+.cookie-policy__table-wrap{
+  overflow-x:auto;
+  border:1px solid var(--sand);
+  border-radius:var(--radius-sm);
+  margin-bottom:1rem;
+}
+.cookie-policy__table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:.9rem;
+  min-width:560px;
+}
+.cookie-policy__table th,
+.cookie-policy__table td{
+  text-align:left;
+  padding:13px 16px;
+  border-bottom:1px solid var(--sand);
+  vertical-align:top;
+}
+.cookie-policy__table th{
+  background:var(--bone-2);
+  font-weight:600;
+  color:var(--dark);
+}
+.cookie-policy__table tr:last-child td{border-bottom:none}
+.cookie-policy__table td{color:var(--muted)}
+.cookie-policy__table code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:.82rem;
+  color:var(--wine);
+  background:rgba(156,16,38,.06);
+  padding:.15rem .4rem;
+  border-radius:6px;
+}
+
+@media (max-width:680px){
+  .cookie-policy__cats{grid-template-columns:1fr}
+}

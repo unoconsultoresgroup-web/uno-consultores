@@ -1,0 +1,211 @@
+/* ---------- 10. MAPA DE UNIDADES (fondo claro) ---------- */
+.map-sec{background:linear-gradient(180deg,var(--bone-2) 0%,#fff 42%,var(--gray-soft) 100%)}
+#servicios{padding-top:40px;border-top:1px solid var(--sand)}
+.map{display:grid;grid-template-columns:1fr 1.3fr;gap:40px;margin-top:30px}
+.map-list{display:flex;flex-direction:column;gap:10px}
+.map-item{display:flex;align-items:center;gap:16px;padding:18px 20px;border-radius:15px;cursor:pointer;
+  border:1px solid var(--sand);background:var(--card);transition:.35s var(--ease)}
+.map-item .mi-ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;flex:none;background:var(--bone-2);color:var(--accent,var(--clay));transition:.3s}
+.map-item .mi-ic svg{width:24px;height:24px}
+.map-item h4{color:var(--dark);font-family:'Hanken Grotesk';font-weight:700;font-size:1.05rem;margin:0}
+.map-item p{font-size:.8rem;color:var(--muted);margin:0}
+.map-item.on,.map-item:hover{background:var(--bone-2);border-color:var(--accent,var(--clay));transform:translateX(6px)}
+.map-item.on .mi-ic{background:var(--accent,var(--clay));color:#fff}
+.map-detail{background:var(--card);border:1px solid var(--sand);border-radius:22px;padding:42px;position:relative;overflow:hidden;min-height:380px;box-shadow:0 24px 50px -34px rgba(36,27,23,.3)}
+.map-detail::after{content:"";position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(closest-side,color-mix(in srgb,var(--accent,var(--clay)) 18%,transparent),transparent);transition:.5s}
+.map-panel{display:none;animation:fadeUp .5s var(--ease)}
+.map-panel.show{display:block}
+.map-panel .u3d-scene{position:relative;z-index:1;width:100%;height:200px;margin-bottom:24px;perspective:1000px;display:grid;place-items:center}
+
+/* ===== RESTO · objetos 3D ilustrados, sombreados y con color (sin fotos, sin neón) ===== */
+
+/* RRHH · grupo de 3 personas de distinto color */
+.o-people{position:relative;width:212px;height:150px;display:flex;align-items:flex-end;justify-content:center;gap:8px;
+  transform-style:preserve-3d;animation:peopleSway 7s ease-in-out infinite}
+@keyframes peopleSway{0%,100%{transform:rotateY(-12deg) translateY(-3px)}50%{transform:rotateY(12deg) translateY(3px)}}
+.fig{position:relative;width:54px;animation:figBob 2.2s ease-in-out infinite}
+.fig .f-head{display:block;width:34px;height:34px;margin:0 auto 5px;border-radius:50%;
+  background:radial-gradient(circle at 36% 30%,#ffe2d1,#e7b58f 75%,#bb8a66);box-shadow:0 6px 12px -5px rgba(0,0,0,.4)}
+.fig .f-body{display:block;width:100%;height:74px;border-radius:30px 30px 14px 14px;
+  background:linear-gradient(125deg,var(--cl),var(--cd));box-shadow:0 12px 22px -10px rgba(0,0,0,.45)}
+.fig.mid{width:66px;z-index:2}
+.fig.mid .f-head{width:42px;height:42px}
+.fig.mid .f-body{height:88px}
+.fig.a{--cl:#33D6CB;--cd:#0c6e68;animation-delay:-.5s}
+.fig.b{--cl:#FF9A6B;--cd:#C2451F;animation-delay:-1s}
+.fig.c{--cl:#F2C14E;--cd:#b07d1c;animation-delay:-1.5s}
+@keyframes figBob{0%,100%{transform:translateY(4px)}50%{transform:translateY(-8px)}}
+
+/* DESARROLLO ORG. · 3 columnas 3D de distinto color en crecimiento */
+.o-cols{position:relative;display:flex;align-items:flex-end;justify-content:center;gap:18px;height:150px;
+  transform:rotateX(8deg);animation:colBob 5s ease-in-out infinite alternate}
+@keyframes colBob{from{transform:rotateX(8deg) translateY(5px)}to{transform:rotateX(8deg) translateY(-5px)}}
+.o-col{position:relative;width:42px;border-radius:21px/9px;
+  background:linear-gradient(90deg,var(--cd),var(--cl) 48%,var(--cd));box-shadow:0 16px 28px -14px rgba(0,0,0,.5)}
+.o-col::before{content:"";position:absolute;top:-8px;left:0;right:0;height:16px;border-radius:50%;
+  background:linear-gradient(color-mix(in srgb,var(--cl) 55%,#fff),var(--cl))}
+.o-col.c1{--cl:#6BA3FF;--cd:#173e9e;height:56px;animation:grow1 2.6s ease-in-out infinite alternate}
+.o-col.c2{--cl:#33D6CB;--cd:#0f7d70;height:96px;animation:grow2 3s ease-in-out infinite alternate}
+.o-col.c3{--cl:#F2C14E;--cd:#b07d1c;height:132px;animation:grow3 2.8s ease-in-out infinite alternate}
+@keyframes grow1{from{height:42px}to{height:74px}}
+@keyframes grow2{from{height:72px}to{height:114px}}
+@keyframes grow3{from{height:102px}to{height:142px}}
+
+/* PSICOLOGÍA · cerebro ilustrado (SVG) animado (violeta) */
+.o-brain{position:relative;width:184px;height:148px;animation:brainPulse 4.2s ease-in-out infinite}
+@keyframes brainPulse{0%,100%{transform:scale(.98) translateY(1px)}50%{transform:scale(1.03) translateY(-1px)}}
+.o-brain .brain-svg{width:100%;height:100%;display:block;overflow:visible;
+  filter:drop-shadow(0 18px 26px rgba(74,28,158,.45))}
+.o-brain .brain-body{fill:url(#brainGrad);stroke:#3a1378;stroke-width:1.4;stroke-opacity:.35}
+.o-brain .brain-cere{fill:url(#brainGrad);stroke:#3a1378;stroke-width:1.4;stroke-opacity:.3}
+.o-brain .brain-stem{fill:url(#brainStemGrad)}
+.o-brain .brain-gloss{fill:url(#brainGloss);pointer-events:none}
+/* gyri grabados: trazo claro arriba para relieve */
+.o-brain .brain-line{fill:none;stroke:#fbeaff;stroke-opacity:.6;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.o-brain .cere-l{stroke-width:2;stroke-opacity:.5}
+.o-brain .syn{fill:#fff;filter:drop-shadow(0 0 5px rgba(255,255,255,.9));animation:synBlink 1.8s ease-in-out infinite}
+.o-brain .s2{animation-delay:-.7s}
+.o-brain .s3{animation-delay:-1.3s}
+@keyframes synBlink{0%,100%{opacity:.2}50%{opacity:1}}
+
+/* LEGAL · mano (con toga) sosteniendo un martillo y golpeando */
+.o-gavel{position:relative;width:196px;height:170px}
+/* base (taco de resonancia) */
+.o-gavel .gv-block{position:absolute;left:50%;bottom:14px;width:100px;height:18px;margin-left:-50px;border-radius:10px/7px;
+  background:linear-gradient(180deg,#F7D27A,#C9912A 55%,#74521a);box-shadow:0 12px 18px -10px rgba(0,0,0,.55)}
+.o-gavel .gv-block::before{content:"";position:absolute;left:10px;right:10px;top:-5px;height:8px;border-radius:6px;background:linear-gradient(#fff0cc,#e7b54a)}
+/* destello del golpe */
+.o-gavel .gv-spark{position:absolute;left:50%;bottom:32px;width:36px;height:36px;margin-left:-18px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,246,214,.95),transparent 64%);opacity:0;animation:gvSpark 2.3s ease-out infinite}
+/* conjunto mano + martillo: pivota desde arriba (muñeca) y baja a golpear */
+.o-gavel .gv-tool{position:absolute;left:50%;top:14px;width:0;height:0;transform-origin:top center;
+  animation:gvTap 2.3s cubic-bezier(.4,0,.5,1) infinite}
+.o-gavel .gv-handle{position:absolute;left:-6px;top:0;width:12px;height:92px;border-radius:7px;
+  background:linear-gradient(90deg,#6e4912,#F7D27A 50%,#6e4912)}
+.o-gavel .gv-head{position:absolute;left:-42px;top:86px;width:84px;height:28px;border-radius:14px;
+  background:linear-gradient(180deg,#fff0cc,#E0A93A 55%,#7a5215);box-shadow:0 8px 16px -8px rgba(0,0,0,.5),inset 0 -4px 8px rgba(0,0,0,.18)}
+.o-gavel .gv-head::before{content:"";position:absolute;left:8px;top:6px;width:22px;height:6px;border-radius:5px;background:rgba(255,255,255,.5)}
+/* manga de toga */
+.o-gavel .gv-sleeve{position:absolute;left:-17px;top:-24px;width:34px;height:44px;border-radius:12px 12px 7px 7px;
+  background:linear-gradient(135deg,#3a3a42,#161619);box-shadow:0 6px 14px -6px rgba(0,0,0,.6)}
+/* puño (mano) agarrando el mango */
+.o-gavel .gv-fist{position:absolute;left:-26px;top:14px;width:52px;height:44px;border-radius:16px;
+  background:linear-gradient(135deg,#ffd9bf,#e0a884);
+  background-image:repeating-linear-gradient(90deg,transparent 0 11px,rgba(0,0,0,.07) 11px 13px),linear-gradient(135deg,#ffd9bf,#e0a884);
+  box-shadow:0 8px 16px -7px rgba(0,0,0,.5)}
+.o-gavel .gv-fist::before{content:"";position:absolute;top:-6px;left:9px;width:34px;height:14px;border-radius:8px;background:linear-gradient(#ffe3ce,#edbf9c)}
+.o-gavel .gv-fist::after{content:"";position:absolute;right:-7px;top:13px;width:15px;height:20px;border-radius:9px;background:linear-gradient(#ffd9bf,#dca480)}
+@keyframes gvTap{0%,40%{transform:rotate(-19deg)}56%{transform:rotate(3deg)}70%{transform:rotate(-1deg)}100%{transform:rotate(-19deg)}}
+@keyframes gvSpark{0%,52%{opacity:0;transform:scale(.4)}60%{opacity:.95;transform:scale(1)}80%,100%{opacity:0;transform:scale(1.4)}}
+
+@media (prefers-reduced-motion:reduce){
+  .o-people,.fig,.o-cols,.o-col,.o-brain,.o-brain .syn,.o-gavel .gv-tool,.o-gavel .gv-spark{animation:none}
+}
+
+/* ===== TECNOLOGÍA · única con impronta tecnológica (pantalla holográfica neón) ===== */
+.holo{position:relative;box-sizing:border-box;width:256px;height:156px;padding:14px 16px;border-radius:16px;--n:#2FE0C0;
+  background:radial-gradient(130% 120% at 50% 0%,#0e1c28,#05080d 80%);
+  border:1px solid color-mix(in srgb,var(--n) 48%,transparent);
+  box-shadow:inset 0 0 44px color-mix(in srgb,var(--n) 20%,transparent),
+    0 26px 52px -22px rgba(0,0,0,.6),0 0 54px -14px color-mix(in srgb,var(--n) 65%,transparent);
+  transform:rotateY(-20deg) rotateX(8deg);animation:holoSway 9s ease-in-out infinite alternate}
+@keyframes holoSway{from{transform:rotateY(-27deg) rotateX(9deg)}to{transform:rotateY(-7deg) rotateX(6deg)}}
+.holo-grid{position:absolute;inset:14px;border-radius:8px;pointer-events:none;
+  background:
+    linear-gradient(color-mix(in srgb,var(--n) 14%,transparent) 1px,transparent 1px) 0 0/100% 25%,
+    linear-gradient(90deg,color-mix(in srgb,var(--n) 10%,transparent) 1px,transparent 1px) 0 0/16.66% 100%}
+.holo-body{position:relative;z-index:1;height:100%}
+.u3d-bars{height:100%;display:flex;align-items:flex-end;justify-content:center;gap:11px}
+.u3d-bar{width:18px;border-radius:5px 5px 2px 2px;
+  background:linear-gradient(180deg,#7CFFE6 0%,#27E0C0 45%,#11A8FF 100%);
+  border-top:2px solid #DBFFF6;box-shadow:0 0 12px rgba(47,240,208,.9),0 0 26px rgba(22,200,255,.5);
+  animation:u3dBar 1.8s ease-in-out infinite alternate}
+.u3d-bar.b0{height:46%;animation-duration:1.5s;animation-delay:-.2s}
+.u3d-bar.b1{height:74%;animation-duration:2.1s;animation-delay:-.9s}
+.u3d-bar.b2{height:36%;animation-duration:1.7s;animation-delay:-.4s}
+.u3d-bar.b3{height:88%;animation-duration:2.4s;animation-delay:-1.3s}
+.u3d-bar.b4{height:58%;animation-duration:1.9s;animation-delay:-.6s}
+.u3d-bar.b5{height:70%;animation-duration:2.2s;animation-delay:-1.1s}
+@keyframes u3dBar{0%{height:22%;filter:brightness(.85)}100%{height:92%;filter:brightness(1.3)}}
+
+/* ===== RESTO · objetos 3D animados con color (sin neón) ===== */
+@keyframes scFloat{from{transform:rotateX(6deg) translateY(-7px)}to{transform:rotateX(6deg) translateY(7px)}}
+@keyframes talentSpin{0%,100%{transform:rotateX(8deg) rotateY(-18deg) translateY(-6px)}50%{transform:rotateX(8deg) rotateY(18deg) translateY(6px)}}
+@keyframes mindSpin{0%,100%{transform:rotateX(4deg) rotateY(-16deg)}50%{transform:rotateX(4deg) rotateY(16deg)}}
+
+/* RRHH · Personas: abanico 3D de fichas (CORAL) */
+.sc-talent{position:relative;width:210px;height:166px;transform-style:preserve-3d;--c:#E0552E;--c2:#FF9A6B;animation:talentSpin 8s ease-in-out infinite}
+.tc-card{position:absolute;left:50%;top:50%;width:106px;height:134px;margin:-67px 0 0 -53px;border-radius:14px;
+  background:linear-gradient(155deg,var(--c2),var(--c));border:1px solid rgba(255,255,255,.4);
+  box-shadow:0 22px 46px -18px color-mix(in srgb,var(--c) 75%,transparent);display:flex;flex-direction:column;align-items:center;padding-top:20px;gap:11px;backface-visibility:hidden}
+.tc-card .av{width:42px;height:42px;border-radius:50%;background:#fff;color:var(--c);display:grid;place-items:center}
+.tc-card .av svg{width:24px;height:24px}
+.tc-card .ln{width:64px;height:7px;border-radius:4px;background:rgba(255,255,255,.55)}
+.tc-card .ln.s{width:42px;background:rgba(255,255,255,.4)}
+.tc-card:nth-child(1){transform:translateZ(-30px) rotateY(-26deg) translateX(-28px);filter:brightness(.9)}
+.tc-card:nth-child(2){transform:translateZ(30px);z-index:2}
+.tc-card:nth-child(3){transform:translateZ(-30px) rotateY(26deg) translateX(28px);filter:brightness(.9)}
+
+/* DESARROLLO ORG. · organigrama 3D (AZUL) */
+.sc-org{position:relative;width:214px;height:158px;transform-style:preserve-3d;--c:#2D5BD0;--c2:#6BA3FF;transform:rotateX(12deg) rotateY(-14deg);animation:orgSway 9s ease-in-out infinite alternate}
+@keyframes orgSway{from{transform:rotateX(12deg) rotateY(-22deg)}to{transform:rotateX(12deg) rotateY(-2deg)}}
+.og-node{position:absolute;width:56px;height:56px;border-radius:15px;display:grid;place-items:center;
+  background:linear-gradient(150deg,var(--c2),var(--c));border:1px solid rgba(255,255,255,.35);color:#fff;
+  box-shadow:0 16px 32px -14px color-mix(in srgb,var(--c) 80%,transparent)}
+.og-node svg{width:26px;height:26px}
+.og-node.top{left:50%;top:2px;margin-left:-28px;transform:translateZ(30px)}
+.og-node.b1{left:14px;bottom:6px}
+.og-node.b2{right:14px;bottom:6px}
+.og-node.b1::after,.og-node.b2::after{content:"";width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,.5)}
+.og-bus{position:absolute;left:50%;top:58px;width:2px;height:20px;margin-left:-1px;background:var(--c2)}
+.og-busH{position:absolute;left:42px;right:42px;top:78px;height:2px;background:var(--c2)}
+.og-drop{position:absolute;top:78px;width:2px;height:30px;background:var(--c2)}
+.og-drop.d1{left:41px}.og-drop.d2{right:41px}
+
+/* PSICOLOGÍA · mente 3D (núcleo + ondas) (VIOLETA) */
+.sc-mind{position:relative;width:180px;height:170px;display:grid;place-items:center;transform-style:preserve-3d;--c:#6E3DD6;--c2:#B98BFF;animation:mindSpin 9s ease-in-out infinite}
+.mn-core{position:relative;z-index:2;width:80px;height:80px;border-radius:50%;display:grid;place-items:center;color:#fff;
+  background:radial-gradient(circle at 35% 30%,var(--c2),var(--c));box-shadow:0 0 34px -4px color-mix(in srgb,var(--c2) 80%,transparent);transform:translateZ(30px)}
+.mn-core svg{width:36px;height:36px}
+.mn-ring{position:absolute;left:50%;top:50%;width:80px;height:80px;border-radius:50%;
+  border:2px solid color-mix(in srgb,var(--c2) 75%,transparent);transform:translate(-50%,-50%) scale(.55);
+  animation:mnPulse 3.2s ease-out infinite}
+.mn-ring.r2{animation-delay:1.05s}
+.mn-ring.r3{animation-delay:2.1s}
+@keyframes mnPulse{0%{transform:translate(-50%,-50%) scale(.55);opacity:.9}100%{transform:translate(-50%,-50%) scale(2.2);opacity:0}}
+
+/* LEGAL · balanza de la justicia 3D (DORADO) */
+.sc-scale{position:relative;width:194px;height:168px;transform-style:preserve-3d;--c:#C9912A;--c2:#F2C14E;animation:scaleFloat 6s ease-in-out infinite alternate}
+@keyframes scaleFloat{0%,100%{transform:rotateX(6deg) rotateY(-12deg) translateY(-4px)}50%{transform:rotateX(6deg) rotateY(12deg) translateY(4px)}}
+.sl-base{position:absolute;left:50%;bottom:10px;width:74px;height:9px;margin-left:-37px;border-radius:4px;background:linear-gradient(var(--c),#7a5818)}
+.sl-post{position:absolute;left:50%;bottom:14px;width:6px;height:120px;margin-left:-3px;border-radius:3px;background:linear-gradient(var(--c2),var(--c))}
+.sl-top{position:absolute;left:50%;top:6px;width:15px;height:15px;margin-left:-7.5px;border-radius:50%;background:var(--c2);box-shadow:0 0 18px -2px var(--c2)}
+.sl-beam-wrap{position:absolute;left:50%;top:14px;width:0;height:0;transform-origin:center top;animation:slRock 4.4s ease-in-out infinite}
+@keyframes slRock{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(10deg)}}
+.sl-beam{position:absolute;left:-74px;top:0;width:148px;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--c),#F7D27A,var(--c))}
+.sl-chain{position:absolute;top:2px;width:2px;height:30px;background:color-mix(in srgb,var(--c2) 70%,transparent)}
+.sl-chain.cl{left:-72px}
+.sl-chain.cr{right:-72px}
+.sl-pan{position:absolute;top:30px;width:52px;height:25px;border-radius:0 0 52px 52px;background:linear-gradient(var(--c2),var(--c));border:1px solid rgba(255,255,255,.35);box-shadow:0 12px 22px -12px color-mix(in srgb,var(--c) 75%,transparent)}
+.sl-pan.left{left:-72px;margin-left:-26px}
+.sl-pan.right{right:-72px;margin-right:-26px}
+
+@media (prefers-reduced-motion:reduce){
+  .holo,.u3d-bar,.sc-talent,.sc-org,.sc-mind,.sc-scale,.mn-ring,.sl-beam-wrap{animation:none}
+}
+.map-panel .p-ic{width:64px;height:64px;border-radius:17px;display:grid;place-items:center;margin-bottom:18px;background:var(--accent,var(--clay));color:#fff;position:relative;z-index:1}
+.map-panel .p-ic svg{width:32px;height:32px}
+.map-panel h3{color:var(--dark);font-size:1.8rem;margin-bottom:.6rem;position:relative;z-index:1}
+.map-panel > p{color:var(--muted);margin-bottom:22px;position:relative;z-index:1;max-width:560px}
+.map-panel .chips{display:flex;flex-wrap:wrap;gap:8px;position:relative;z-index:1}
+.map-panel .chips span{font-size:.8rem;font-weight:500;padding:.4rem .85rem;border-radius:100px;background:var(--bone-2);border:1px solid var(--sand);color:var(--dark)}
+.map-panel .p-ctas{margin-top:26px;position:relative;z-index:1;display:flex;align-items:center;flex-wrap:wrap;gap:18px}
+.map-panel .p-cta{margin:0}
+.map-panel .p-link{font-weight:600;font-size:.92rem;color:var(--accent,var(--clay));transition:.25s}
+.map-panel .p-link:hover{opacity:.7}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+@media (max-width:980px){
+  .map{grid-template-columns:1fr;gap:24px}
+}
