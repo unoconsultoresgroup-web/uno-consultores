@@ -258,7 +258,7 @@ export const units: Unit[] = [
     intro:
       "Acompañamos a las organizaciones a repensar cómo operan y entregan valor. Identificamos dónde la tecnología genera mayor impacto, construimos los productos digitales que lo hacen posible y automatizamos las operaciones para ganar velocidad, consistencia y capacidad de crecer.",
     highlight:
-      "Incorporamos inteligencia artificial solo donde realmente mueve al negocio.",
+      "Resolvemos el problema completo: del diagnóstico a la operación.",
     services: [
       {
         title: "Productos digitales a medida",
