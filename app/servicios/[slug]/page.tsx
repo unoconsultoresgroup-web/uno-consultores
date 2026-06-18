@@ -69,17 +69,6 @@ export default async function UnitPage({
   };
   // Encuadre del fondo por unidad (imágenes verticales se enfocan en el sujeto)
   const heroPos: Record<string, string> = {};
-  const STACK = [
-    { name: "JavaScript", logo: "/tech/javascript.svg" },
-    { name: "Java", logo: "/tech/java.svg" },
-    { name: "Swift", logo: "/tech/swift.svg" },
-    { name: "Electron", logo: "/tech/electron.svg" },
-    { name: "React", logo: "/tech/react.svg" },
-    { name: "Next.js", logo: "/tech/nextjs.svg" },
-    { name: "Nest.js", logo: "/tech/nestjs.svg" },
-    { name: "Python", logo: "/tech/python.svg" },
-    { name: "GraphQL", logo: "/tech/graphql.svg" },
-  ];
 
   return (
     <>
@@ -141,21 +130,27 @@ export default async function UnitPage({
           <section className="section u-modes-sec">
             <div className="wrap u-modes-grid">
               <div className="u-modes-copy">
-                <span className="eyebrow">Staff augmentation & software factory</span>
-                <h2>Tu próximo ingeniero senior está en Latinoamérica.</h2>
+                <span className="eyebrow">Software Factory</span>
+                <h2>Construimos las aplicaciones que tu negocio necesita.</h2>
                 <p>
-                  Conectamos a empresas en crecimiento con ingenieros senior de
-                  Argentina: pre-evaluados, con inglés profesional e integrados
-                  a tu equipo en días. Trabajan en tu zona horaria y aportan
-                  desde el primer día.
+                  Somos tu software factory: tomamos tu producto de punta a
+                  punta. Desarrollamos aplicaciones a medida para web, mobile y
+                  desktop, con inteligencia artificial integrada donde suma
+                  valor real.
                 </p>
                 <div className="u-modes">
                   <article className="u-mode">
-                    <h3>Software Factory</h3>
+                    <h3>De la idea al producto</h3>
                     <p>
-                      Tomamos tu producto de punta a punta: diseñamos,
-                      desarrollamos y entregamos software a medida con un equipo
-                      completo y metodología propia.
+                      Diseño, desarrollo, QA y entrega: te acompañamos en todo
+                      el ciclo con un equipo completo y metodología propia.
+                    </p>
+                  </article>
+                  <article className="u-mode">
+                    <h3>Multiplataforma + IA</h3>
+                    <p>
+                      Web, mobile y desktop sobre un mismo stack moderno, con
+                      integración de inteligencia artificial a tus procesos.
                     </p>
                   </article>
                 </div>
@@ -229,136 +224,53 @@ export default async function UnitPage({
         </section>
 
         {isTech && (
-          <>
-            {/* ===== Stack tecnológico: carrusel 3D con logos ===== */}
-            <section className="section u-stack-sec u-dark-sec">
-              <div className="wrap">
-                <div className="section-head">
-                  <span className="eyebrow on-dark">Stack tecnológico</span>
-                  <h2>Las tecnologías que manejamos</h2>
-                  <p>
-                    Stack moderno y versátil para construir web, mobile, desktop
-                    y servicios de datos en tiempo real.
-                  </p>
-                </div>
-                <div className="tech-ring-stage" aria-hidden="true">
-                  <div className="tech-ring">
-                    {STACK.map((tech, i) => (
-                      <span
-                        key={tech.name}
-                        className="tech-chip"
-                        style={{
-                          transform: `rotateY(${(360 / STACK.length) * i}deg) translateZ(340px)`,
-                        }}
-                      >
-                        <img src={tech.logo} alt={tech.name} width={34} height={34} />
-                        {tech.name}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <ul className="tech-list">
-                  {STACK.map((tech) => (
-                    <li key={tech.name}>
-                      <img src={tech.logo} alt="" width={20} height={20} />
-                      {tech.name}
-                    </li>
-                  ))}
-                  <li>Streaming apps</li>
-                </ul>
+          /* ===== IA (imagen + copy) ===== */
+          <section className="section u-ai-sec">
+            <div className="wrap u-ai-grid">
+              <div className="u-ai-visual">
+                <img
+                  className="u-ai-photo"
+                  src="/pexels-divinetechygirl-1181673.jpg"
+                  alt="Equipo trabajando con inteligencia artificial"
+                  width={560}
+                  height={700}
+                />
               </div>
-            </section>
-
-            {/* ===== IA (fondo blanco, con cerebro animado) ===== */}
-            <section className="section u-ai-sec">
-              <div className="wrap u-ai-grid">
-                <div className="u-ai-visual" aria-hidden="true">
-                  <svg className="ai-robot" viewBox="0 0 200 210" fill="none">
-                    <defs>
-                      <radialGradient id="uRobHead" cx="34%" cy="26%" r="82%">
-                        <stop offset="0" stopColor="#f5edfc" />
-                        <stop offset="0.45" stopColor="#b15ce6" />
-                        <stop offset="0.8" stopColor="#9b3cdf" />
-                        <stop offset="1" stopColor="#5a1a86" />
-                      </radialGradient>
-                      <radialGradient id="uRobFace" cx="50%" cy="40%" r="75%">
-                        <stop offset="0" stopColor="#2a0a40" />
-                        <stop offset="1" stopColor="#1a0628" />
-                      </radialGradient>
-                      <radialGradient id="uRobEye" cx="40%" cy="35%" r="70%">
-                        <stop offset="0" stopColor="#ffffff" />
-                        <stop offset="0.55" stopColor="#ecd9fc" />
-                        <stop offset="1" stopColor="#c98cf0" />
-                      </radialGradient>
-                    </defs>
-
-                    <g className="rob-bob">
-                      {/* antena */}
-                      <line className="rob-antenna" x1="100" y1="40" x2="100" y2="20" />
-                      <circle className="rob-bulb" cx="100" cy="15" r="7" />
-
-                      {/* orejas / paneles laterales */}
-                      <rect className="rob-ear" x="30" y="92" width="14" height="36" rx="6" />
-                      <rect className="rob-ear" x="156" y="92" width="14" height="36" rx="6" />
-
-                      {/* cabeza */}
-                      <rect className="rob-head" x="42" y="42" width="116" height="120" rx="30" />
-
-                      {/* pantalla de la cara */}
-                      <rect className="rob-face" x="56" y="58" width="88" height="88" rx="22" />
-
-                      {/* ojos */}
-                      <circle className="rob-eye" cx="82" cy="92" r="11" />
-                      <circle className="rob-eye" cx="118" cy="92" r="11" />
-
-                      {/* boca tipo altavoz */}
-                      <rect className="rob-mouth" x="78" y="118" width="44" height="14" rx="7" />
-                      <line className="rob-mouth-bar" x1="90" y1="118" x2="90" y2="132" />
-                      <line className="rob-mouth-bar" x1="100" y1="118" x2="100" y2="132" />
-                      <line className="rob-mouth-bar" x1="110" y1="118" x2="110" y2="132" />
-
-                      {/* cuello / base */}
-                      <rect className="rob-neck" x="86" y="160" width="28" height="14" rx="5" />
-                      <path className="rob-shoulder" d="M58 200 C58 182 78 174 100 174 C122 174 142 182 142 200 Z" />
-                    </g>
-                  </svg>
-                </div>
-                <div className="u-ai-copy">
-                  <span className="eyebrow">Inteligencia Artificial</span>
-                  <h2>Implementamos IA en tu negocio</h2>
-                  <p>
-                    Integramos inteligencia artificial a tus procesos para
-                    automatizar tareas, acelerar decisiones y crear nuevas
-                    capacidades. Identificamos dónde la IA genera más impacto y
-                    la implementamos de forma segura y medible.
-                  </p>
-                  <div className="u-ai-cards">
-                    <article className="u-ai-card">
-                      <h3>Agentes de IA</h3>
-                      <p>
-                        Creamos agentes que asisten, responden y ejecutan tareas
-                        conectados a tus sistemas y datos.
-                      </p>
-                    </article>
-                    <article className="u-ai-card">
-                      <h3>Automatización con IA</h3>
-                      <p>
-                        Automatizamos flujos y procesos repetitivos combinando
-                        IA con tus herramientas actuales.
-                      </p>
-                    </article>
-                    <article className="u-ai-card">
-                      <h3>IA aplicada al negocio</h3>
-                      <p>
-                        Detectamos oportunidades y diseñamos soluciones de IA a
-                        medida, con foco en resultados concretos.
-                      </p>
-                    </article>
-                  </div>
+              <div className="u-ai-copy">
+                <span className="eyebrow">Inteligencia Artificial</span>
+                <h2>IA donde realmente aporta valor</h2>
+                <p>
+                  Detectamos dónde la inteligencia artificial mueve la aguja del
+                  negocio y la implementamos de forma segura y medible: agentes
+                  que asisten y ejecutan tareas, automatización de procesos y
+                  capacidades nuevas conectadas a tu información.
+                </p>
+                <div className="u-ai-cards">
+                  <article className="u-ai-card">
+                    <h3>Agentes de IA</h3>
+                    <p>
+                      Asisten, responden y ejecutan tareas conectados a tus
+                      sistemas y datos.
+                    </p>
+                  </article>
+                  <article className="u-ai-card">
+                    <h3>Automatización con IA</h3>
+                    <p>
+                      Flujos y procesos repetitivos resueltos combinando IA con
+                      tus herramientas actuales.
+                    </p>
+                  </article>
+                  <article className="u-ai-card">
+                    <h3>IA aplicada al negocio</h3>
+                    <p>
+                      Oportunidades detectadas y soluciones a medida, con foco
+                      en resultados concretos.
+                    </p>
+                  </article>
                 </div>
               </div>
-            </section>
-          </>
+            </div>
+          </section>
         )}
 
         {/* ===== Qué incluye (entregables) ===== */}

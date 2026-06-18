@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const TO = process.env.PROPOSAL_TO_EMAIL || "alanvera48@gmail.com";
 const FROM = process.env.PROPOSAL_FROM_EMAIL || "uno consultores <onboarding@resend.dev>";
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.mrconsultores.com").replace(/\/$/, "");
@@ -122,6 +120,7 @@ export async function POST(req: Request) {
   }
 
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const { error } = await resend.emails.send({
       from: FROM,
       to: TO,

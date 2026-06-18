@@ -501,6 +501,8 @@
 
 /* Cara de robot (IA) en paleta vino */
 .u-ai-visual{display:grid;place-items:center;padding:20px 0}
+.u-ai-photo{width:100%;max-width:460px;height:auto;aspect-ratio:4/5;object-fit:cover;
+  border-radius:22px;box-shadow:0 26px 50px -24px rgba(36,27,23,.55)}
 .ai-robot{width:100%;max-width:360px;height:auto;overflow:visible;
   filter:drop-shadow(0 18px 28px rgba(94,10,22,.4))}
 .ai-robot .rob-bob{transform-box:view-box;transform-origin:center;
