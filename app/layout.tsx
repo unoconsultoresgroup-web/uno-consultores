@@ -29,6 +29,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Uno Consultores" }],
   alternates: { canonical: "/" },
+  verification: {
+    google: "yL1ismbxfrr0gZmKnN1oVdSMzUj1BktO-sI4gAB1DVA",
+  },
   icons: {
     icon: "/logo-sin-fondo-ezgif.com-crop.png",
     shortcut: "/logo-sin-fondo-ezgif.com-crop.png",
