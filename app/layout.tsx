@@ -45,12 +45,21 @@ export const metadata: Metadata = {
     title: "Uno Consultores · Talento y tecnología en una sola firma",
     description:
       "Firma integral de capital humano: tecnología, selección, desarrollo organizacional, legal y psicología. Tu socio estratégico de transformación.",
+    images: [
+      {
+        url: "/hero.jpg",
+        width: 1100,
+        height: 733,
+        alt: "Uno Consultores · Talento y tecnología en una sola firma",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Uno Consultores · Talento y tecnología en una sola firma",
     description:
       "Firma integral de capital humano: tecnología, selección, desarrollo organizacional, legal y psicología.",
+    images: ["/hero.jpg"],
   },
   robots: {
     index: true,
@@ -71,8 +80,11 @@ const jsonLd = {
   description:
     "Firma integral de capital humano: tecnología, selección, desarrollo organizacional, legal y psicología.",
   url: SITE_URL,
+  logo: `${SITE_URL}/logo-sin-fondo.png`,
+  image: `${SITE_URL}/hero.jpg`,
   email: "unoconsultoresgroup@gmail.com",
   telephone: "+541176661157",
+  sameAs: ["https://www.linkedin.com/company/mr-consultores"],
   areaServed: "AR",
   address: {
     "@type": "PostalAddress",
