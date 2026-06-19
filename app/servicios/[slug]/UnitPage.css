@@ -419,6 +419,41 @@
 .u-mode h3{font-family:'Fraunces',serif;font-size:1.2rem;color:var(--dark);margin-bottom:.5rem}
 .u-mode p{color:var(--muted);font-size:.9rem}
 
+/* Resolvemos el problema (tech): cards de capacidades + celular */
+.u-solve-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;margin-top:40px}
+.u-solve-caps{display:grid;gap:12px}
+.u-solve-caps .u-ai-card{margin:0}
+.u-solve-caps .u-ai-card:hover{transform:translateX(6px);border-color:var(--accent,var(--wine))}
+@media(max-width:900px){
+  .u-solve-grid{grid-template-columns:1fr;gap:36px}
+  .u-solve-grid .u-phone-stage{order:-1}
+}
+
+/* Capacidades compactas (tech): lista simple en vez de cards */
+.u-caps{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.u-cap{display:inline-flex;align-items:center;gap:10px;
+  padding:14px 22px;border-radius:999px;background:var(--card);
+  border:1px solid var(--sand);font-family:'Fraunces',serif;
+  font-size:1.05rem;color:var(--dark)}
+.u-cap-dot{width:8px;height:8px;border-radius:50%;background:var(--accent,var(--wine));flex:none}
+.u-caps--left{justify-content:flex-start;margin-top:22px}
+.u-caps--left .u-cap{font-size:.98rem;padding:11px 18px}
+
+/* Proceso por pasos (tech) */
+.u-steps-wrap{margin-top:56px}
+.u-steps-wrap .eyebrow{margin-bottom:24px;display:inline-block}
+.u-steps{list-style:none;margin:0;padding:0;display:grid;
+  grid-template-columns:repeat(5,1fr);gap:20px;counter-reset:none}
+.u-step{position:relative;padding:24px 18px;border-radius:16px;
+  background:var(--card);border:1px solid var(--sand)}
+.u-step-num{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;
+  font-family:'Fraunces',serif;font-weight:600;font-size:1rem;
+  color:#fff;background:var(--accent,var(--wine));margin-bottom:14px}
+.u-step h3{font-family:'Fraunces',serif;font-size:1.08rem;color:var(--dark);margin-bottom:.45rem}
+.u-step p{color:var(--muted);font-size:.88rem;line-height:1.5}
+@media(max-width:960px){.u-steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.u-steps{grid-template-columns:1fr}}
+
 /* Celular 3D con captura de app */
 .u-phone-stage{display:grid;place-items:center;perspective:1300px}
 .u-phone{position:relative;width:252px;height:514px;border-radius:42px;padding:11px;
@@ -493,7 +528,7 @@
 .u-ai-copy .eyebrow{margin-bottom:1rem}
 .u-ai-copy h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:1rem}
 .u-ai-copy>p{color:var(--muted);font-size:1.05rem;max-width:560px;margin-bottom:24px}
-.u-ai-cards{display:grid;grid-template-columns:1fr;gap:14px}
+.u-ai-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
 .u-ai-card{background:var(--card);border:1px solid var(--sand);border-radius:16px;padding:22px 24px;transition:.35s var(--ease)}
 .u-ai-card:hover{transform:translateX(6px);border-color:var(--wine)}
 .u-ai-card h3{font-family:'Fraunces',serif;font-size:1.2rem;color:var(--dark);margin-bottom:.35rem}

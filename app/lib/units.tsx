@@ -292,5 +292,189 @@ export const units: Unit[] = [
   },
 ];
 
+/* ---------- Contenido EN de detalle (para /servicios/[slug]) ----------
+   El ES vive en el array `units` de arriba; acá solo el inglés. */
+export type UnitDetailContent = {
+  tagline: string;
+  intro: string;
+  highlight: string;
+  services: UnitService[];
+  deliverables: string[];
+};
+
+export const unitDetailEn: Record<Unit["key"], UnitDetailContent> = {
+  rrhh: {
+    tagline: "Attraction, development and performance.",
+    intro:
+      "We design and implement talent management systems that attract, develop and retain the right people, with clear, measurable processes aligned to business goals.",
+    highlight: "Talent management that's organized, measurable and ready to scale.",
+    services: [
+      {
+        title: "Recruitment & selection",
+        desc: "We define the profile, assess candidates and guide the whole process until the right person joins the role and the organization.",
+      },
+      {
+        title: "Onboarding",
+        desc: "We design onboarding processes that shorten ramp-up time, speed up learning and improve the joining experience.",
+      },
+      {
+        title: "Performance management",
+        desc: "We implement goal, review and feedback systems that measure results and inform better decisions on development and recognition.",
+      },
+      {
+        title: "Talent management",
+        desc: "We identify employees with potential and design development plans that prepare people to take on new challenges.",
+      },
+      {
+        title: "Career paths",
+        desc: "We design growth tracks and promotion criteria that bring clarity to the development opportunities within the organization.",
+      },
+      {
+        title: "Training & development",
+        desc: "We detect training needs and build programs that strengthen technical, leadership and management skills.",
+      },
+    ],
+    deliverables: [
+      "Documented, repeatable selection processes",
+      "Performance dashboards and indicators",
+      "Talent map and development plans",
+      "Salary bands and benefits policy",
+      "Tailored onboarding program",
+    ],
+  },
+  do: {
+    tagline: "Culture, leadership and transformation.",
+    intro:
+      "We support organizations' growth by strengthening their culture, developing leaders and building structures able to sustain change and business evolution.",
+    highlight: "Growth with identity: structure, leadership and culture aligned.",
+    services: [
+      {
+        title: "Organizational diagnosis",
+        desc: "Assessment of structure, culture and processes with a findings report and an improvement plan.",
+      },
+      {
+        title: "Organizational structure",
+        desc: "Design of org charts, roles, responsibilities and decision levels aligned to the business strategy.",
+      },
+      {
+        title: "Organizational culture",
+        desc: "Definition of values, behaviors and practices that strengthen organizational identity.",
+      },
+      {
+        title: "Change management",
+        desc: "Implementation and support plans to ease the adoption of new practices and processes.",
+      },
+      {
+        title: "Leadership development",
+        desc: "Training and coaching programs for middle managers, supervisors and leadership teams.",
+      },
+      {
+        title: "Employee experience",
+        desc: "Diagnosis and improvement of the employee experience across the key moments of their journey.",
+      },
+      {
+        title: "Team building",
+        desc: "Sessions and activities to strengthen bonds, trust and collaboration across teams.",
+      },
+    ],
+    deliverables: [
+      "Diagnosis report with an action plan",
+      "Leadership development program",
+      "Career map and succession matrix",
+      "Org chart and job descriptions",
+      "Employee value proposition (EVP)",
+    ],
+  },
+  psico: {
+    tagline: "Assessment and wellbeing.",
+    intro:
+      "We provide professional assessment, technical analysis and psychological tools to support decisions related to talent, performance and wellbeing.",
+    highlight: "Organizational psychology with a strategic focus.",
+    services: [
+      {
+        title: "Psychometric assessments",
+        desc: "Professional evaluations with technical backing to identify potential and inform talent decisions.",
+      },
+      {
+        title: "Competency-based assessment",
+        desc: "Competency-based evaluation dynamics that observe the person in context, with structured feedback.",
+      },
+      {
+        title: "Potential mapping",
+        desc: "Identification of capabilities and growth projection to plan talent development.",
+      },
+    ],
+    deliverables: [
+      "Psychometric reports signed by a licensed professional",
+      "Design and facilitation of assessment centers",
+      "Coaching processes with measurable goals",
+      "Organizational climate survey and report",
+      "Wellbeing and support plan",
+    ],
+  },
+  legal: {
+    tagline: "Compliance and labor relations.",
+    intro:
+      "We combine labor-law expertise and HR management to prevent contingencies, ensure regulatory compliance and build solid, sustainable labor relations.",
+    highlight: "Your company's labor management, solved end to end.",
+    services: [
+      {
+        title: "Labor audits",
+        desc: "Comprehensive review of records and documentation to detect and fix gaps before they become a problem.",
+      },
+      {
+        title: "Internal policies",
+        desc: "Drafting and updating of clear internal regulations compliant with current legislation.",
+      },
+      {
+        title: "Comprehensive legal advisory",
+        desc: "Design of people policies that bring order to management and predictability to decisions.",
+      },
+      {
+        title: "Labor relations",
+        desc: "Management of the relationship with employees and representatives, focused on preserving the working relationship.",
+      },
+      {
+        title: "Disciplinary procedures",
+        desc: "Technical and human support in sanctions and disciplinary processes, minimizing legal risk.",
+      },
+      {
+        title: "Labor compliance",
+        desc: "Implementation and audit of regulatory compliance to keep your company in order and protected.",
+      },
+    ],
+    deliverables: [
+      "Contract templates and up-to-date documentation",
+      "Termination and sanction protocols",
+      "Labor compliance program",
+      "Documented mediation processes",
+      "Document audit report with a remediation plan",
+    ],
+  },
+  tech: {
+    tagline: "From business problem to measurable result.",
+    intro:
+      "We help organizations rethink how they operate and deliver value. We pinpoint where technology has the greatest impact, build the digital products that make it possible and automate operations to gain speed, consistency and room to grow.",
+    highlight: "We solve the whole problem: from diagnosis to operation.",
+    services: [
+      {
+        title: "Custom digital products",
+        desc: "We build the applications and platforms your team and customers use every day, designed to solve a concrete problem and support growth.",
+      },
+      {
+        title: "Operations automation",
+        desc: "We remove manual, repetitive work to cut errors and time, keeping the team focused on what adds value.",
+      },
+    ],
+    deliverables: [
+      "A working digital product, adopted by your teams",
+      "Measurable reduction of time and errors in the processes we touch",
+      "Critical tasks and flows running autonomously",
+      "Information unified in a single reliable source",
+      "An evolution roadmap with business priorities",
+    ],
+  },
+};
+
 export const getUnit = (slug: string): Unit | undefined =>
   units.find((u) => u.slug === slug);
