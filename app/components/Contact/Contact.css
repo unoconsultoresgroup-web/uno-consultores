@@ -1,7 +1,10 @@
 /* ---------- 16. CONTACTO (beige) ---------- */
-.contact{background:linear-gradient(180deg,var(--avellana) 0%,var(--gray-soft) 100%)}
+.contact{background:#fff;position:relative}
+.contact-divider{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#40bfb4 0%,#9b3cdf 50%,#727372 100%);z-index:2}
 #contacto{padding-top:60px}
-.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:50px}
+.contact-grid{display:grid;grid-template-columns:1fr;gap:20px;max-width:680px;margin:0 auto;position:relative;z-index:1}
+.contact-intro{text-align:center}
+.contact-intro .eyebrow{justify-content:center}
 .form-card{background:var(--card);border:1px solid var(--sand);border-radius:var(--radius);padding:38px;box-shadow:0 18px 40px -28px rgba(36,27,23,.3)}
 .form-card h3{color:var(--dark);font-size:1.5rem;margin-bottom:.3rem}
 .form-card .sub{color:var(--muted);font-size:.92rem;margin-bottom:24px}

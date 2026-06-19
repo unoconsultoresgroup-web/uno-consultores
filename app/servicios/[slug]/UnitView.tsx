@@ -4,6 +4,7 @@ import type { CSSProperties } from "react";
 
 import { useLang, useT } from "../../lib/i18n";
 import { getUnit, unitDetailEn } from "../../lib/units";
+import CtaWaves from "../../components/CtaWaves/CtaWaves";
 
 const v = (vars: Record<string, string>) => vars as CSSProperties;
 
@@ -144,7 +145,8 @@ export default function UnitView({ slug }: { slug: string }) {
 
       {/* ===== CTA ===== */}
       <section className="u-cta-band">
-        <div className="wrap">
+        <CtaWaves />
+        <div className="wrap u-cta-band__content">
           <h2>
             {up.ctaBandPre} {name}?
           </h2>

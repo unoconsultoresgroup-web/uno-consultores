@@ -300,6 +300,10 @@
   color: var(--text);
   background: var(--bone-2);
 }
+.u-cta-band__content {
+  position: relative;
+  z-index: 1;
+}
 .u-cta-band h2 {
   color: var(--dark);
   font-size: clamp(1.8rem, 3.8vw, 2.8rem);
@@ -390,6 +394,85 @@
 .u-hero--light .u-btn-ghost{color:var(--dark);border-color:var(--sand)}
 .u-hero--light .u-btn-ghost:hover{background:var(--dark);color:#fff;border-color:var(--dark)}
 .u-hero--light .u-hero-grid{grid-template-columns:0.92fr 1.08fr;gap:48px}
+
+/* Sección del estallido 3D (Three.js) — tecnología + IA */
+.tech-burst-sec{
+  position:relative;
+  overflow:hidden;
+  padding:120px 0 150px;
+  color:var(--bone);
+  background:
+    radial-gradient(120% 130% at 50% 118%, color-mix(in srgb, var(--wine) 38%, transparent), transparent 60%),
+    linear-gradient(160deg, #3C3C40 0%, #1F1F22 64%, #000000 100%);
+}
+.tech-burst{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+}
+.tech-burst canvas{display:block;width:100%;height:100%}
+.tech-burst-copy{position:relative;z-index:1;text-align:center;max-width:640px}
+.tech-burst-copy h2{color:var(--bone);font-size:clamp(2rem,3.6vw,2.9rem);margin-bottom:1rem}
+.tech-burst-copy p{color:var(--muted-d);font-size:1.08rem;line-height:1.6}
+
+/* Demo de chat de agente de IA */
+.u-chat-sec{overflow:hidden}
+.u-chat-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.u-chat-copy>p{color:var(--muted);font-size:1.05rem;max-width:520px;margin-top:.5rem}
+.u-chat-solves{list-style:none;margin:22px 0 0;padding:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:12px 22px}
+.u-chat-solves li{display:flex;align-items:center;gap:10px;color:var(--dark);
+  font-size:.95rem;font-weight:500}
+.u-chat-solves .u-check{width:22px;height:22px;flex:none}
+.u-chat-solves .u-check svg{width:13px;height:13px}
+
+/* Stage de la pila de chats */
+.u-chat-stage{position:relative;display:grid;place-items:center;min-height:460px}
+.ai-stack{position:relative;width:100%;display:grid;place-items:center;min-height:440px}
+.ai-stack-card{position:absolute;width:100%;max-width:420px;cursor:pointer;
+  transition:transform .5s var(--ease),opacity .5s var(--ease),filter .5s var(--ease)}
+.ai-stack-card.is-active{cursor:default}
+.ai-stack-float{animation:stackFloat 8s ease-in-out infinite}
+.ai-stack-card.is-active .ai-stack-float{animation:none}
+@keyframes stackFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+.ai-chat{position:relative;width:100%;background:var(--card);
+  border:1px solid var(--sand);border-radius:22px;overflow:hidden;
+  box-shadow:0 30px 60px -34px rgba(36,27,23,.5)}
+.ai-chat-head{display:flex;align-items:center;gap:12px;padding:16px 18px;
+  background:linear-gradient(160deg,#3C3C40,#1F1F22);color:var(--bone)}
+.ai-chat-av{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;
+  background:var(--wine);color:#fff;flex:none}
+.ai-chat-av svg{width:20px;height:20px}
+.ai-chat-id{display:flex;flex-direction:column;line-height:1.25}
+.ai-chat-id strong{font-family:'Fraunces',serif;font-size:1rem}
+.ai-chat-status{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted-d)}
+.ai-chat-status i{width:7px;height:7px;border-radius:50%;background:#4ade80;
+  box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:aiPulse 2s infinite}
+.ai-chat-body{display:flex;flex-direction:column;gap:10px;padding:20px 18px;
+  height:300px;overflow:hidden;background:var(--bone)}
+.ai-bubble{max-width:82%;padding:11px 15px;border-radius:16px;font-size:.92rem;
+  line-height:1.45;animation:aiBubbleIn .3s var(--ease) both}
+.ai-bubble--assistant{align-self:flex-start;background:var(--bone-2);color:var(--dark);
+  border-bottom-left-radius:5px}
+.ai-bubble--user{align-self:flex-end;background:var(--wine);color:#fff;
+  border-bottom-right-radius:5px}
+.ai-typing{display:inline-flex;gap:4px;padding:2px 0}
+.ai-typing i{width:7px;height:7px;border-radius:50%;background:var(--muted);
+  animation:aiTyping 1.2s infinite}
+.ai-typing i:nth-child(2){animation-delay:.2s}
+.ai-typing i:nth-child(3){animation-delay:.4s}
+@keyframes aiBubbleIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes aiTyping{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+@keyframes aiPulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}70%{box-shadow:0 0 0 7px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+@media(max-width:860px){
+  .u-chat-grid{grid-template-columns:1fr;gap:34px}
+  .ai-stack-card{max-width:360px}
+}
+@media(max-width:480px){.u-chat-solves{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){
+  .ai-bubble,.ai-typing i,.ai-chat-status i,.ai-stack-float{animation:none}
+}
 .u-hero-extra{color:var(--muted);font-size:1.02rem;max-width:520px;margin:0 0 1.4rem}
 .u-hero-feats{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 1.9rem;padding:0;list-style:none}
 .u-hero-feats li{font-size:.78rem;font-weight:600;color:var(--dark);background:var(--bone-2);
@@ -533,44 +616,35 @@
 .u-ai-card:hover{transform:translateX(6px);border-color:var(--wine)}
 .u-ai-card h3{font-family:'Fraunces',serif;font-size:1.2rem;color:var(--dark);margin-bottom:.35rem}
 .u-ai-card p{color:var(--muted);font-size:.92rem}
+.u-ai-card--icon{display:flex;gap:14px;align-items:flex-start}
+.u-ai-card-ic{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:12px;
+  background:color-mix(in srgb,var(--wine) 12%,transparent);color:var(--wine);transition:.35s var(--ease)}
+.u-ai-card-ic svg{width:22px;height:22px}
+.u-ai-card--icon:hover .u-ai-card-ic{background:var(--wine);color:#fff}
 
 /* Cara de robot (IA) en paleta vino */
 .u-ai-visual{display:grid;place-items:center;padding:20px 0}
-.u-ai-photo{width:100%;max-width:460px;height:auto;aspect-ratio:4/5;object-fit:cover;
-  border-radius:22px;box-shadow:0 26px 50px -24px rgba(36,27,23,.55)}
-.ai-robot{width:100%;max-width:360px;height:auto;overflow:visible;
-  filter:drop-shadow(0 18px 28px rgba(94,10,22,.4))}
-.ai-robot .rob-bob{transform-box:view-box;transform-origin:center;
-  animation:aiRobBob 4.6s ease-in-out infinite}
-/* cabeza y partes metálicas */
-.ai-robot .rob-head{fill:url(#uRobHead);stroke:#4a0a12;stroke-width:1.4;stroke-opacity:.35}
-.ai-robot .rob-ear{fill:#7a0c1d;stroke:#4a0a12;stroke-width:1.2;stroke-opacity:.4}
-.ai-robot .rob-neck{fill:#7a0c1d}
-.ai-robot .rob-shoulder{fill:url(#uRobHead);stroke:#4a0a12;stroke-width:1.4;stroke-opacity:.3}
-/* antena con bulbo que late */
-.ai-robot .rob-antenna{stroke:#7a0c1d;stroke-width:4;stroke-linecap:round}
-.ai-robot .rob-bulb{fill:url(#uRobEye);
-  filter:drop-shadow(0 0 7px rgba(255,125,150,.9));
-  animation:aiRobGlow 1.8s ease-in-out infinite}
-/* pantalla de la cara */
-.ai-robot .rob-face{fill:url(#uRobFace);stroke:#4a0a12;stroke-width:1;stroke-opacity:.5}
-/* ojos que parpadean */
-.ai-robot .rob-eye{fill:url(#uRobEye);transform-box:fill-box;transform-origin:center;
-  filter:drop-shadow(0 0 6px rgba(255,125,150,.95));
-  animation:aiRobBlink 4s ease-in-out infinite}
-/* boca tipo altavoz */
-.ai-robot .rob-mouth{fill:none;stroke:#ff9db0;stroke-width:2;stroke-opacity:.8}
-.ai-robot .rob-mouth-bar{stroke:#ff9db0;stroke-width:2;stroke-opacity:.6;stroke-linecap:round;
-  transform-box:fill-box;transform-origin:center;
-  animation:aiRobTalk 1.4s ease-in-out infinite}
-.ai-robot .rob-mouth-bar:nth-of-type(2){animation-delay:.2s}
-.ai-robot .rob-mouth-bar:nth-of-type(3){animation-delay:.4s}
-@keyframes aiRobBob{0%,100%{transform:translateY(2px) rotate(-1deg)}50%{transform:translateY(-3px) rotate(1deg)}}
-@keyframes aiRobGlow{0%,100%{opacity:.7;transform:scale(.9)}50%{opacity:1;transform:scale(1.1)}}
-@keyframes aiRobBlink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
-@keyframes aiRobTalk{0%,100%{transform:scaleY(.6)}50%{transform:scaleY(1)}}
-@media (prefers-reduced-motion:reduce){
-  .ai-robot .rob-bob,.ai-robot .rob-bulb,.ai-robot .rob-eye,.ai-robot .rob-mouth-bar{animation:none}
+/* Robot de IA a color (reemplaza la imagen) */
+.ai-robot{display:grid;place-items:center;padding:8px 0}
+.ai-robot-svg{width:100%;max-width:240px;height:auto;overflow:visible;
+  filter:drop-shadow(0 22px 34px rgba(123,40,176,.4))}
+.ai-robot-bob{transform-box:view-box;transform-origin:center;
+  animation:robBob 4.6s ease-in-out infinite}
+.rob-antenna{stroke:#c98cf0;stroke-width:4;stroke-linecap:round}
+.rob-bulb{filter:drop-shadow(0 0 8px rgba(125,240,255,.9));
+  animation:robPulse 1.8s ease-in-out infinite}
+.rob-arm{fill:#7a2bb0}
+.rob-ear{fill:#6f23a8}
+.rob-eyes{transform-box:fill-box;transform-origin:center;
+  animation:robBlink 4.2s ease-in-out infinite}
+.rob-eyes circle{filter:drop-shadow(0 0 6px rgba(125,240,255,.95))}
+.rob-core{filter:drop-shadow(0 0 7px rgba(125,240,255,.9));
+  animation:robPulse 2.2s ease-in-out infinite}
+@keyframes robBob{0%,100%{transform:translateY(2px)}50%{transform:translateY(-5px)}}
+@keyframes robPulse{0%,100%{opacity:.7}50%{opacity:1}}
+@keyframes robBlink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.12)}}
+@media(prefers-reduced-motion:reduce){
+  .ai-robot-bob,.rob-bulb,.rob-eyes,.rob-core{animation:none}
 }
 
 @media (max-width:880px){

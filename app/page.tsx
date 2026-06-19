@@ -24,7 +24,7 @@ export default function Home() {
       <About />
       <Units />
       <Cases />
-      <CtaBanner />
+      {/* <CtaBanner /> */}
       {/* <Blog /> */}
       <Contact />
       <Footer />

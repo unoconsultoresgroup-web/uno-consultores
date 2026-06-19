@@ -3,6 +3,7 @@
 import { useState } from "react";
 import "./Contact.css";
 import { useT, useLang } from "../../lib/i18n";
+import CtaWaves from "../CtaWaves/CtaWaves";
 
 type Status = "idle" | "sending" | "ok" | "error";
 type Field = "name" | "company" | "email" | "phone" | "unit" | "message";
@@ -73,8 +74,7 @@ export default function Contact() {
 
   function update(field: Field, raw: string) {
     // En teléfono filtramos en vivo cualquier carácter no permitido.
-    const value =
-      field === "phone" ? raw.replace(PHONE_ALLOWED_RE, "") : raw;
+    const value = field === "phone" ? raw.replace(PHONE_ALLOWED_RE, "") : raw;
     setValues((prev) => ({ ...prev, [field]: value }));
     // Limpiamos el error del campo a medida que el usuario corrige.
     setErrors((prev) => (prev[field] ? { ...prev, [field]: undefined } : prev));
@@ -110,13 +110,26 @@ export default function Contact() {
 
   return (
     <section className="section contact" id="contacto">
+      <span className="contact-divider" aria-hidden="true" />
+      <CtaWaves />
       <div className="wrap contact-grid">
-        <div>
+        <div className="contact-intro">
           <span className="eyebrow">{t.contact.eyebrow}</span>
-          <h2 style={{ fontSize: "clamp(1.9rem,3.6vw,2.7rem)", marginBottom: "1.2rem" }}>
+          <h2
+            style={{
+              fontSize: "clamp(1.9rem,3.6vw,2.7rem)",
+              marginBottom: "1.2rem",
+            }}
+          >
             {t.contact.h2}
           </h2>
-          <p style={{ color: "var(--muted)", fontSize: "1.1rem", marginBottom: "2rem" }}>
+          <p
+            style={{
+              color: "var(--muted)",
+              fontSize: "1.1rem",
+              marginBottom: 0,
+            }}
+          >
             {t.contact.p}
           </p>
         </div>
@@ -148,7 +161,9 @@ export default function Contact() {
                   placeholder={t.contact.fNamePh}
                   data-cursor=""
                 />
-                {errors.name && <span className="field-error">{errors.name}</span>}
+                {errors.name && (
+                  <span className="field-error">{errors.name}</span>
+                )}
               </div>
               <div className="field">
                 <label>{t.contact.fCompany}</label>
@@ -175,7 +190,9 @@ export default function Contact() {
                   placeholder={t.contact.fEmailPh}
                   data-cursor=""
                 />
-                {errors.email && <span className="field-error">{errors.email}</span>}
+                {errors.email && (
+                  <span className="field-error">{errors.email}</span>
+                )}
               </div>
               <div className="field">
                 <label>{t.contact.fPhone}</label>
@@ -190,7 +207,9 @@ export default function Contact() {
                   placeholder={t.contact.fPhonePh}
                   data-cursor=""
                 />
-                {errors.phone && <span className="field-error">{errors.phone}</span>}
+                {errors.phone && (
+                  <span className="field-error">{errors.phone}</span>
+                )}
               </div>
             </div>
             <div className="field">
@@ -228,7 +247,12 @@ export default function Contact() {
               disabled={status === "sending"}
             >
               {status === "sending" ? sendingLabel : t.contact.submit}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </button>

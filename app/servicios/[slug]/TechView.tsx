@@ -4,6 +4,10 @@ import type { CSSProperties } from "react";
 
 import { useLang, useT } from "../../lib/i18n";
 import { getUnit, unitDetailEn } from "../../lib/units";
+import TechBurst from "./TechBurst";
+import AiChatStack from "./AiChatStack";
+import AiRobot, { cardIcons } from "./AiRobot";
+import CtaWaves from "../../components/CtaWaves/CtaWaves";
 
 const v = (vars: Record<string, string>) => vars as CSSProperties;
 
@@ -161,26 +165,62 @@ export default function TechView({ slug }: { slug: string }) {
       <section className="section u-ai-sec">
         <div className="wrap u-ai-grid">
           <div className="u-ai-visual">
-            <img
-              className="u-ai-photo"
-              src="/pexels-divinetechygirl-1181673.jpg"
-              alt=""
-              width={560}
-              height={700}
-            />
+            <AiRobot />
           </div>
           <div className="u-ai-copy">
             <span className="eyebrow">{up.aiEyebrow}</span>
             <h2>{up.aiH2}</h2>
             <p>{up.aiP}</p>
             <div className="u-ai-cards">
-              {up.aiPoints.map((p) => (
-                <article className="u-ai-card" key={p.t}>
-                  <h3>{p.t}</h3>
-                  <p>{p.p}</p>
-                </article>
-              ))}
+              {up.aiPoints.map((p, i) => {
+                const Icon = cardIcons[i] ?? cardIcons[0];
+                return (
+                  <article className="u-ai-card u-ai-card--icon" key={p.t}>
+                    <span className="u-ai-card-ic" aria-hidden="true">
+                      <Icon />
+                    </span>
+                    <div>
+                      <h3>{p.t}</h3>
+                      <p>{p.p}</p>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Estallido 3D: tecnología + IA conectadas ===== */}
+      <section className="tech-burst-sec">
+        <TechBurst />
+        <div className="wrap tech-burst-copy">
+          <span className="eyebrow on-dark">{up.burstEyebrow}</span>
+          <h2>{up.burstH2}</h2>
+          <p>{up.burstP}</p>
+        </div>
+      </section>
+
+      {/* ===== Demo de agente de IA (chat animado) ===== */}
+      <section className="section u-chat-sec">
+        <div className="wrap u-chat-grid">
+          <div className="u-chat-copy">
+            <span className="eyebrow">{up.chatEyebrow}</span>
+            <h2>{up.chatH2}</h2>
+            <p>{up.chatP}</p>
+            <ul className="u-chat-solves">
+              {up.chatSolves.map((s) => (
+                <li key={s}>
+                  <span className="u-check" aria-hidden="true">
+                    <Check />
+                  </span>
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="u-chat-stage">
+            <AiChatStack convos={up.chatConvos} online={up.chatOnline} />
           </div>
         </div>
       </section>
@@ -214,7 +254,8 @@ export default function TechView({ slug }: { slug: string }) {
 
       {/* ===== CTA ===== */}
       <section className="u-cta-band">
-        <div className="wrap">
+        <CtaWaves />
+        <div className="wrap u-cta-band__content">
           <h2>
             {up.ctaBandPre} {name}?
           </h2>
