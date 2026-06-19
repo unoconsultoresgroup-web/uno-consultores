@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { units } from "./lib/units";
 
-const SITE_URL = "https://www.mrconsultores.com"; // TODO: dominio real
+const SITE_URL = "https://unoconsultores.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

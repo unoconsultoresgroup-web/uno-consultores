@@ -6,7 +6,7 @@ import CookieConsent from "./components/CookieConsent";
 import GtmConsent from "./components/GtmConsent";
 import { LANG_COOKIE, type Lang } from "./lib/detect-locale";
 
-const SITE_URL = "https://www.unoconsultores.com"; // TODO: reemplazar por el dominio real
+const SITE_URL = "https://unoconsultores.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

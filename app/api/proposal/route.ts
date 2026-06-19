@@ -3,7 +3,7 @@ import { Resend } from "resend";
 
 const TO = process.env.PROPOSAL_TO_EMAIL || "alanvera48@gmail.com";
 const FROM = process.env.PROPOSAL_FROM_EMAIL || "uno consultores <onboarding@resend.dev>";
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.mrconsultores.com").replace(/\/$/, "");
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://unoconsultores.com").replace(/\/$/, "");
 
 type Payload = {
   name?: string;
