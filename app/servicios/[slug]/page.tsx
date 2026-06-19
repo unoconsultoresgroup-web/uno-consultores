@@ -7,6 +7,7 @@ import Footer from "../../components/Footer";
 import Interactions from "../../components/Interactions";
 import { units, getUnit } from "../../lib/units";
 import UnitView from "./UnitView";
+import TechView from "./TechView";
 import "./UnitPage.css";
 
 /* Genera las 5 rutas estáticas en build. */
@@ -41,13 +42,18 @@ export default async function UnitPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  if (!getUnit(slug)) notFound();
+  const unit = getUnit(slug);
+  if (!unit) notFound();
 
   return (
     <>
       <CursorUI />
       <Nav light />
-      <UnitView slug={slug} />
+      {unit.key === "tech" ? (
+        <TechView slug={slug} />
+      ) : (
+        <UnitView slug={slug} />
+      )}
       <Footer />
       <Interactions />
     </>

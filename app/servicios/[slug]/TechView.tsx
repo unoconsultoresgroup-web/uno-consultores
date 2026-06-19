@@ -18,15 +18,55 @@ const Check = () => (
   </svg>
 );
 
-const heroImg: Record<string, string> = {
-  rrhh: "/unit-rrhh.jpg",
-  do: "/unit-do.jpg",
-  psico: "/unit-psico.jpg",
-  legal: "/unit-legal.jpg",
-  tech: "/unit-tech.jpg",
-};
+/* Celular 3D con captura de app (se mueve solo) */
+const Phone = () => (
+  <div className="u-phone-stage" aria-hidden="true">
+    <div className="u-phone">
+      <span className="u-phone-notch" />
+      <div className="u-phone-screen app">
+        <div className="app-status">
+          <span>9:41</span>
+          <span className="app-status-dots">
+            <i /><i /><i />
+          </span>
+        </div>
+        <div className="app-head">
+          <div>
+            <span className="app-hi">Hola, equipo 👋</span>
+            <span className="app-sub">Panel del proyecto</span>
+          </div>
+          <span className="app-av" />
+        </div>
+        <div className="app-hero-card">
+          <span className="app-hero-label">Sprint actual</span>
+          <span className="app-hero-num">87%</span>
+          <span className="app-hero-foot">12 tareas · 3 en revisión</span>
+          <span className="app-live">● en vivo</span>
+        </div>
+        <div className="app-chart">
+          {[44, 72, 56, 90, 64, 80].map((h, i) => (
+            <span key={i} style={{ "--h": `${h}%` } as CSSProperties} />
+          ))}
+        </div>
+        <div className="app-list">
+          {["API Gateway", "Auth service", "Dashboard"].map((r) => (
+            <div className="app-row" key={r}>
+              <span className="app-row-ic" />
+              <span className="app-row-name">{r}</span>
+              <span className="app-row-tag" />
+            </div>
+          ))}
+        </div>
+        <div className="app-tabs">
+          <i className="on" /><i /><i /><i />
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
-export default function UnitView({ slug }: { slug: string }) {
+/* Página de detalle dedicada a Tecnología y Producto. */
+export default function TechView({ slug }: { slug: string }) {
   const { lang } = useLang();
   const t = useT();
   const unit = getUnit(slug);
@@ -53,10 +93,10 @@ export default function UnitView({ slug }: { slug: string }) {
       className="unit-page"
       style={v({ "--accent": "var(--wine)", "--accent-2": accent })}
     >
-      {/* ===== Hero de la unidad ===== */}
+      {/* ===== Hero ===== */}
       <section
         className="u-hero u-hero--photo"
-        style={v({ "--hero-img": `url(${heroImg[key]})` })}
+        style={v({ "--hero-img": `url(/unit-tech.jpg)` })}
       >
         <div className="u-hero-lines" aria-hidden="true"></div>
         <div className="wrap">
@@ -95,7 +135,7 @@ export default function UnitView({ slug }: { slug: string }) {
         </div>
       </section>
 
-      {/* ===== Intro + servicios ===== */}
+      {/* ===== Qué resolvemos: capacidades + celular ===== */}
       <section className="section u-services-sec">
         <div className="wrap">
           <div className="section-head">
@@ -103,14 +143,44 @@ export default function UnitView({ slug }: { slug: string }) {
             <h2>{c.highlight}</h2>
             <p>{c.intro}</p>
           </div>
-          <div className="u-services">
-            {c.services.map((s) => (
-              <article className="u-service" key={s.title}>
-                <span className="u-service-mark" aria-hidden="true" />
-                <h3>{s.title}</h3>
-                <p>{s.desc}</p>
-              </article>
-            ))}
+          <div className="u-solve-grid">
+            <div className="u-solve-caps">
+              {up.techCaps.map((s) => (
+                <article className="u-ai-card" key={s.t}>
+                  <h3>{s.t}</h3>
+                  <p>{s.p}</p>
+                </article>
+              ))}
+            </div>
+            <Phone />
+          </div>
+        </div>
+      </section>
+
+      {/* ===== IA (imagen + copy) ===== */}
+      <section className="section u-ai-sec">
+        <div className="wrap u-ai-grid">
+          <div className="u-ai-visual">
+            <img
+              className="u-ai-photo"
+              src="/pexels-divinetechygirl-1181673.jpg"
+              alt=""
+              width={560}
+              height={700}
+            />
+          </div>
+          <div className="u-ai-copy">
+            <span className="eyebrow">{up.aiEyebrow}</span>
+            <h2>{up.aiH2}</h2>
+            <p>{up.aiP}</p>
+            <div className="u-ai-cards">
+              {up.aiPoints.map((p) => (
+                <article className="u-ai-card" key={p.t}>
+                  <h3>{p.t}</h3>
+                  <p>{p.p}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
