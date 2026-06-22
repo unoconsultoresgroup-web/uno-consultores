@@ -72,7 +72,7 @@ export const dict = {
       casos: "Casos",
       faq: "FAQ",
       blog: "Centro de conocimiento",
-      cta: "Solicitar propuesta",
+      cta: "Solicitar propuesta dasd",
       verMapa: "Ver mapa completo →",
     },
     hero: {

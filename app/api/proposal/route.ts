@@ -32,12 +32,18 @@ function buildHtml(data: Payload): string {
   const row = (label: string, value: string | undefined, isMessage = false) => {
     const clean = esc(value);
     if (!clean) return "";
+    // El mensaje puede ser largo o traer URLs/palabras sin espacios: lo envolvemos
+    // en un contenedor que respeta saltos de línea, corta palabras largas para que
+    // no se desborde (causa del texto "cortado") y permite scroll si es muy extenso.
+    const cellValue = isMessage
+      ? `<div style="white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;max-height:260px;overflow-y:auto;">${clean}</div>`
+      : clean;
     return `
       <tr>
         <td style="padding:14px 0;border-bottom:1px solid #efe7e0;vertical-align:top;width:160px;">
           <span style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9b3cdf;">${label}</span>
         </td>
-        <td style="padding:14px 0;border-bottom:1px solid #efe7e0;color:#241b17;font-size:15px;line-height:1.55;${isMessage ? "white-space:pre-wrap;" : ""}">${clean}</td>
+        <td style="padding:14px 0;border-bottom:1px solid #efe7e0;color:#241b17;font-size:15px;line-height:1.55;">${cellValue}</td>
       </tr>`;
   };
 
