@@ -59,15 +59,8 @@ export default function Interactions() {
       });
     }
 
-    /* ===== Menú móvil ===== */
-    const burger = document.getElementById("burger"),
-      mm = document.getElementById("mm");
-    if (burger && mm) {
-      burger.addEventListener("click", () => mm.classList.toggle("open"));
-      mm.querySelectorAll("a").forEach((a) =>
-        a.addEventListener("click", () => mm.classList.remove("open"))
-      );
-    }
+    /* El menú móvil ahora lo controla el componente Nav (estado React):
+       toggle del burger, cierre con Escape/backdrop/link y bloqueo de scroll. */
 
     /* ===== Mesh reactivo ===== */
     const mesh = document.getElementById("mesh");

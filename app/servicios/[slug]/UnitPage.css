@@ -113,47 +113,96 @@
   height: 74px;
 }
 
-/* ---------- Servicios ---------- */
-.u-services {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+/* ---------- Servicios (acordeón expandible) ---------- */
+.u-acc {
+  max-width: 880px;
+  border-top: 1px solid var(--sand);
 }
-.u-service {
-  position: relative;
-  background: var(--card);
-  border: 1px solid var(--sand);
-  border-radius: var(--radius);
-  padding: 30px 28px 28px;
-  transition: 0.4s var(--ease);
+.u-acc-item {
+  border-bottom: 1px solid var(--sand);
 }
-.u-service:hover {
-  transform: translateY(-6px);
-  border-color: var(--accent, var(--clay));
-  box-shadow: 0 30px 60px -34px rgba(36, 27, 23, 0.35);
+.u-acc-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 24px 8px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  transition: padding-left 0.32s var(--ease);
 }
-.u-service-mark {
-  display: block;
-  width: 36px;
-  height: 4px;
-  border-radius: 100px;
-  margin-bottom: 20px;
-  background: var(--accent, var(--clay));
+.u-acc-trigger:hover {
+  padding-left: 14px;
 }
-/* alternar el color de las cards: una bordó (--accent), una del color de la unidad (--accent-2) */
-.u-service:nth-child(even) {
-  --accent: var(--accent-2);
+.u-acc-mark {
+  width: 9px;
+  height: 9px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--sand);
+  transition: background 0.3s, transform 0.3s var(--ease);
 }
-.u-service h3 {
-  font-family: "Hanken Grotesk", sans-serif;
-  font-weight: 700;
-  font-size: 1.12rem;
+.u-acc-item.open .u-acc-mark {
+  background: var(--accent-2, var(--wine));
+  transform: scale(1.3);
+}
+.u-acc-title {
+  flex: 1;
+  font-family: "Fraunces", serif;
+  font-weight: 500;
+  font-size: clamp(1.12rem, 1.9vw, 1.4rem);
+  line-height: 1.25;
   color: var(--dark);
-  margin-bottom: 0.6rem;
+  transition: color 0.25s;
 }
-.u-service p {
+.u-acc-trigger:hover .u-acc-title,
+.u-acc-item.open .u-acc-title {
+  color: var(--accent-2, var(--wine));
+}
+.u-acc-icon {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
   color: var(--muted);
-  font-size: 0.96rem;
+  border: 1px solid var(--sand);
+  transition: 0.35s var(--ease);
+}
+.u-acc-icon svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.35s var(--ease);
+}
+.u-acc-item.open .u-acc-icon {
+  background: var(--accent-2, var(--wine));
+  border-color: transparent;
+  color: #fff;
+}
+.u-acc-item.open .u-acc-icon svg {
+  transform: rotate(180deg);
+}
+/* Expansión suave con grid-template-rows (sin medir alturas en JS). */
+.u-acc-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s var(--ease);
+}
+.u-acc-item.open .u-acc-panel {
+  grid-template-rows: 1fr;
+}
+.u-acc-panel-inner {
+  overflow: hidden;
+}
+.u-acc-panel p {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 680px;
+  padding: 0 8px 26px 35px;
 }
 
 /* ---------- Qué incluye (oscuro) ---------- */
@@ -318,9 +367,6 @@
 
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
-  .u-services {
-    grid-template-columns: repeat(2, 1fr);
-  }
   .u-incluye-grid {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -346,8 +392,12 @@
     width: 52px;
     height: 52px;
   }
-  .u-services {
-    grid-template-columns: 1fr;
+  .u-acc-trigger {
+    padding: 20px 4px;
+    gap: 14px;
+  }
+  .u-acc-panel p {
+    padding-left: 27px;
   }
 }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 
 import { useLang, useT } from "../../lib/i18n";
 import { getUnit, unitDetailEn } from "../../lib/units";
@@ -18,6 +18,11 @@ const Check = () => (
     <path d="M20 6L9 17l-5-5" />
   </svg>
 );
+const Chevron = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+    <path d="M6 9l6 6 6-6" />
+  </svg>
+);
 
 const heroImg: Record<string, string> = {
   rrhh: "/unit-rrhh.jpg",
@@ -31,6 +36,8 @@ export default function UnitView({ slug }: { slug: string }) {
   const { lang } = useLang();
   const t = useT();
   const unit = getUnit(slug);
+  // El primer servicio arranca abierto; -1 = todos cerrados.
+  const [openIdx, setOpenIdx] = useState(0);
   if (!unit) return null;
 
   const { Icon, key, accent } = unit;
@@ -104,14 +111,32 @@ export default function UnitView({ slug }: { slug: string }) {
             <h2>{c.highlight}</h2>
             <p>{c.intro}</p>
           </div>
-          <div className="u-services">
-            {c.services.map((s) => (
-              <article className="u-service" key={s.title}>
-                <span className="u-service-mark" aria-hidden="true" />
-                <h3>{s.title}</h3>
-                <p>{s.desc}</p>
-              </article>
-            ))}
+          <div className="u-acc">
+            {c.services.map((s, i) => {
+              const isOpen = openIdx === i;
+              return (
+                <div className={`u-acc-item${isOpen ? " open" : ""}`} key={s.title}>
+                  <button
+                    type="button"
+                    className="u-acc-trigger"
+                    onClick={() => setOpenIdx(isOpen ? -1 : i)}
+                    aria-expanded={isOpen}
+                    data-cursor=""
+                  >
+                    <span className="u-acc-mark" aria-hidden="true" />
+                    <span className="u-acc-title">{s.title}</span>
+                    <span className="u-acc-icon" aria-hidden="true">
+                      <Chevron />
+                    </span>
+                  </button>
+                  <div className="u-acc-panel">
+                    <div className="u-acc-panel-inner">
+                      <p>{s.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

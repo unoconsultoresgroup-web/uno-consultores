@@ -72,8 +72,11 @@ export const dict = {
       casos: "Casos",
       faq: "FAQ",
       blog: "Centro de conocimiento",
-      cta: "Solicitar propuesta dasd",
+      cta: "Solicitar propuesta",
       verMapa: "Ver mapa completo →",
+      menu: "Menú",
+      openMenu: "Abrir menú",
+      closeMenu: "Cerrar menú",
     },
     hero: {
       eyebrow: "Firma integral de capital humano",
@@ -373,6 +376,9 @@ export const dict = {
       blog: "Knowledge hub",
       cta: "Request a proposal",
       verMapa: "See full map →",
+      menu: "Menu",
+      openMenu: "Open menu",
+      closeMenu: "Close menu",
     },
     hero: {
       eyebrow: "Integral human-capital firm",

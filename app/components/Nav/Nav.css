@@ -21,7 +21,6 @@
   background:var(--card);color:var(--dark);font-family:'Hanken Grotesk';font-weight:700;font-size:.78rem;letter-spacing:.06em;cursor:pointer;transition:.2s}
 .lang-toggle:hover{background:var(--dark);color:#fff;border-color:var(--dark)}
 .lang-toggle::after{display:none}
-.mm-lang{align-self:flex-start;margin-bottom:18px}
 
 /* ----- Dropdown de Unidades ----- */
 .nav-drop{position:relative}
@@ -44,19 +43,55 @@
   font-weight:600;font-size:.85rem;color:var(--wine)}
 .nav-drop-menu .nd-all:hover{background:var(--bone-2)}
 
-/* ----- Submenú de unidades en menú móvil ----- */
-.mm-sub{display:flex;flex-direction:column;border-bottom:1px solid rgba(245,241,232,.12)}
-.mm-sub a{font-size:1.05rem;font-family:'Hanken Grotesk';font-weight:500;color:var(--muted-d);
-  padding:.45rem 0 .45rem 18px;border-bottom:0}
-.mm-sub a:hover{color:var(--clay-soft);padding-left:24px}
-.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
-.burger span{width:25px;height:2px;background:currentColor;transition:.3s}
+/* ----- Burger (se anima a X cuando el menú está abierto) ----- */
+.burger{display:none;flex-direction:column;justify-content:center;gap:6px;background:none;border:0;cursor:pointer;
+  width:44px;height:44px;padding:0;align-items:center;position:relative;z-index:101}
+.burger span{width:26px;height:2px;border-radius:2px;background:currentColor;transition:transform .35s var(--ease),opacity .2s var(--ease),background .2s}
 .nav:not(.dark-mode) .burger span,.nav.scrolled .burger span{background:var(--dark)}
-.mobile-menu{position:fixed;inset:0;z-index:99;background:var(--dark);color:var(--bone);padding:110px 34px 40px;
-  transform:translateX(100%);transition:transform .45s var(--ease);overflow-y:auto}
-.mobile-menu.open{transform:translateX(0)}
-.mobile-menu a{display:block;font-family:'Fraunces',serif;font-size:1.7rem;padding:.55rem 0;border-bottom:1px solid rgba(245,241,232,.12);transition:.2s}
+.nav .burger.is-open span{background:var(--bone)}
+.burger.is-open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.burger.is-open span:nth-child(2){opacity:0;transform:scaleX(.4)}
+.burger.is-open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+/* ----- Backdrop ----- */
+.mm-backdrop{position:fixed;inset:0;z-index:9994;background:rgba(12,12,12,.5);backdrop-filter:blur(2px);
+  opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s}
+.mm-backdrop.open{opacity:1;visibility:visible}
+
+/* ----- Panel del menú móvil ----- */
+.mobile-menu{position:fixed;top:0;right:0;bottom:0;z-index:9995;width:min(88vw,360px);
+  background:linear-gradient(165deg,#1b1b20,#0c0c0c);color:var(--bone);
+  display:flex;flex-direction:column;box-shadow:-30px 0 70px -30px rgba(0,0,0,.7);
+  transform:translateX(100%);transition:transform .42s var(--ease);overflow-y:auto;visibility:hidden}
+.mobile-menu.open{transform:translateX(0);visibility:visible}
+
+/* Cabecera del panel */
+.mm-top{display:flex;align-items:center;justify-content:space-between;
+  padding:22px 26px;border-bottom:1px solid rgba(245,241,232,.1)}
+.mm-brand{font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem;color:var(--bone);letter-spacing:-.01em}
+.mm-close{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+  color:var(--bone);background:rgba(245,241,232,.08);border:1px solid rgba(245,241,232,.16);transition:.22s}
+.mm-close:hover{background:rgba(245,241,232,.18);transform:rotate(90deg)}
+
+/* Links */
+.mm-body{flex:1;display:flex;flex-direction:column;padding:22px 26px;gap:1px}
+.mobile-menu a{display:block;font-family:'Fraunces',serif;font-size:1.42rem;color:var(--bone);
+  padding:.62rem 0;border-bottom:1px solid rgba(245,241,232,.08);transition:color .2s,padding .25s var(--ease)}
 .mobile-menu a:hover{color:var(--clay-soft);padding-left:8px}
+
+/* Submenú de unidades */
+.mm-sub{display:flex;flex-direction:column;padding:6px 0 10px 6px;border-bottom:1px solid rgba(245,241,232,.08)}
+.mm-sub a{display:flex;align-items:center;gap:11px;font-family:'Hanken Grotesk',sans-serif;font-size:1rem;
+  font-weight:500;color:var(--muted-d);padding:.42rem 0;border-bottom:0}
+.mm-sub a:hover{color:var(--bone);padding-left:6px}
+.mm-sub-dot{width:8px;height:8px;border-radius:50%;flex:none}
+
+/* Pie: CTA + idioma */
+.mm-foot{padding:20px 26px 30px;border-top:1px solid rgba(245,241,232,.1);
+  display:flex;align-items:center;gap:14px}
+.mm-cta{flex:1;justify-content:center}
+.mm-lang{flex:none;background:transparent;color:var(--bone);border-color:rgba(245,241,232,.28)}
+.mm-lang:hover{background:var(--bone);color:var(--dark);border-color:var(--bone)}
 
 @media (max-width:680px){
   .nav-links{display:none}
