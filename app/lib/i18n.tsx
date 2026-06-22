@@ -247,6 +247,29 @@ export const dict = {
       reject: "Rechazar todas",
       more: "Política de cookies",
     },
+    chat: {
+      title: "Asistente Uno",
+      subtitle: "Te respondemos al instante",
+      open: "Abrir chat",
+      close: "Cerrar chat",
+      placeholder: "Escribí tu mensaje...",
+      send: "Enviar",
+      skip: "Omitir",
+      restart: "Iniciar otra consulta",
+      greeting:
+        "¡Hola! 👋 Soy el asistente de Uno Consultores. Te hago unas preguntas rápidas y un asesor te contacta. Para empezar, ¿cómo es tu nombre?",
+      askCompany: "¡Gracias, {name}! ¿De qué empresa nos escribís?",
+      askEmail: "Perfecto. ¿A qué email te respondemos?",
+      askPhone:
+        "¿Tenés un teléfono o WhatsApp de contacto? Podés tocar “Omitir” si preferís.",
+      askMessage: "Genial. Por último, contanos brevemente en qué te podemos ayudar.",
+      invalidEmail: "Mmm, ese email no parece válido. ¿Lo escribís de nuevo?",
+      sending: "Enviando tu consulta...",
+      success:
+        "✓ ¡Listo, {name}! Recibimos tu consulta y te contactamos a la brevedad. 🙌",
+      error:
+        "Uy, no pudimos enviar tu consulta. Probá de nuevo en un momento o escribinos a unoconsultoresgroup@gmail.com.",
+    },
     unitNames: {
       rrhh: { name: "Gestión del Talento", short: "Atracción, desarrollo y desempeño" },
       do: { name: "Desarrollo Organizacional", short: "Cultura, liderazgo y transformación" },
@@ -522,6 +545,29 @@ export const dict = {
       accept: "Accept all",
       reject: "Reject all",
       more: "Cookie policy",
+    },
+    chat: {
+      title: "Uno Assistant",
+      subtitle: "We reply instantly",
+      open: "Open chat",
+      close: "Close chat",
+      placeholder: "Type your message...",
+      send: "Send",
+      skip: "Skip",
+      restart: "Start another inquiry",
+      greeting:
+        "Hi there! 👋 I'm the Uno Consultores assistant. I'll ask a few quick questions and an advisor will reach out. To start, what's your name?",
+      askCompany: "Thanks, {name}! Which company are you writing from?",
+      askEmail: "Great. What email should we reply to?",
+      askPhone:
+        "Do you have a phone or WhatsApp we can reach you at? Tap “Skip” if you prefer.",
+      askMessage: "Awesome. Lastly, tell us briefly how we can help you.",
+      invalidEmail: "Hmm, that email doesn't look valid. Could you type it again?",
+      sending: "Sending your inquiry...",
+      success:
+        "✓ All set, {name}! We received your inquiry and will contact you shortly. 🙌",
+      error:
+        "Oops, we couldn't send your inquiry. Please try again in a moment or email us at unoconsultoresgroup@gmail.com.",
     },
     unitNames: {
       rrhh: { name: "Talent Management", short: "Attraction, development and performance" },

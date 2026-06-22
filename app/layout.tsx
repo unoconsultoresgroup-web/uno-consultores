@@ -4,6 +4,7 @@ import "./globals.css";
 import { LangProvider } from "./lib/i18n";
 import CookieConsent from "./components/CookieConsent";
 import GtmConsent from "./components/GtmConsent";
+import Chatbot from "./components/Chatbot";
 import { LANG_COOKIE, type Lang } from "./lib/detect-locale";
 
 const SITE_URL = "https://unoconsultores.com";
@@ -130,6 +131,7 @@ export default async function RootLayout({
           {children}
           <CookieConsent />
           <GtmConsent />
+          <Chatbot />
         </LangProvider>
       </body>
     </html>
