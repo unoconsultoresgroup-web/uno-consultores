@@ -55,11 +55,6 @@ export default function Hero() {
               {t.hero.cta2}
             </a>
           </div>
-          <div className="hero-tags">
-            {t.hero.tags.map((x) => (
-              <span key={x}>{x}</span>
-            ))}
-          </div>
         </div>
 
         {/* Carrusel redondo: Talento / Cultura / Tecnología */}
