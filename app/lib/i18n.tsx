@@ -82,7 +82,7 @@ export const dict = {
       eyebrow: "Firma integral de capital humano",
       h1a: "Construimos organizaciones",
       h1b: "preparadas para",
-      h1em: "el futuro",
+      h1em: "el futuro.",
       lead: "Diseñamos soluciones que combinan experiencia humana, conocimiento especializado y tecnología para impulsar el desarrollo sostenible de cada organización.",
       cta1: "Solicitar propuesta",
       cta2: "Explorar servicios",
