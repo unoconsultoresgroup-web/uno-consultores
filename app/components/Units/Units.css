@@ -225,8 +225,40 @@
 .map-panel .p-link:hover{opacity:.7}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
+/* ===== Mapa como acordeón (solo mobile) ===== */
+.map-acc{display:none}
+.macc-item{border:1px solid var(--sand);border-radius:16px;background:var(--card);
+  overflow:hidden;transition:border-color .3s var(--ease)}
+.macc-item.open{border-color:var(--accent,var(--wine))}
+.macc-head{display:flex;align-items:center;gap:14px;width:100%;padding:15px 16px;
+  background:none;border:0;cursor:pointer;text-align:left;color:inherit;font:inherit}
+.macc-ic{width:46px;height:46px;border-radius:12px;flex:none;display:grid;place-items:center;
+  background:var(--bone-2);color:var(--accent,var(--wine));transition:.3s}
+.macc-item.open .macc-ic{background:var(--accent,var(--wine));color:#fff}
+.macc-ic svg{width:24px;height:24px}
+.macc-txt{flex:1;min-width:0;display:flex;flex-direction:column}
+.macc-txt strong{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:1.02rem;
+  color:var(--dark);line-height:1.25}
+.macc-txt small{font-size:.82rem;color:var(--muted)}
+.macc-caret{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+  color:var(--accent,var(--wine));background:color-mix(in srgb,var(--accent,var(--wine)) 10%,transparent)}
+.macc-caret svg{width:15px;height:15px;transition:transform .3s var(--ease)}
+.macc-item.open .macc-caret svg{transform:rotate(180deg)}
+.macc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease)}
+.macc-item.open .macc-panel{grid-template-rows:1fr}
+.macc-body{overflow:hidden;min-height:0}
+.macc-intro{color:var(--muted);font-size:.92rem;line-height:1.55;margin:0 0 12px;padding:0 16px}
+.macc-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px}
+.macc-chips span{font-size:.8rem;font-weight:500;padding:.4rem .8rem;border-radius:100px;
+  background:var(--bone-2);border:1px solid var(--sand);color:var(--dark)}
+.macc-ctas{display:flex;align-items:center;flex-wrap:wrap;gap:16px;padding:16px 16px 18px}
+.macc-link{font-weight:600;font-size:.9rem;color:var(--accent,var(--wine));transition:.25s}
+.macc-link:hover{opacity:.7}
+
 @media (max-width:980px){
-  .map{grid-template-columns:1fr;gap:24px}
+  /* En mobile el mapa master-detail se reemplaza por el acordeón. */
+  .map{display:none}
+  .map-acc{display:flex;flex-direction:column;gap:12px;margin-top:22px}
 }
 
 /* ===== Red de especialistas ===== */
@@ -239,17 +271,33 @@
   border:1px solid var(--sand);border-radius:var(--radius);padding:26px 28px;transition:.4s var(--ease)}
 .spec-card:hover{transform:translateY(-4px);border-color:var(--accent,var(--clay));
   box-shadow:0 26px 52px -34px rgba(36,27,23,.4)}
+.spec-body{flex:1;min-width:0}
 .spec-ic{width:52px;height:52px;border-radius:14px;flex:none;display:grid;place-items:center;
   background:color-mix(in srgb,var(--accent,var(--clay)) 12%,transparent);
   color:var(--accent,var(--clay));transition:.3s}
 .spec-card:hover .spec-ic{background:var(--accent,var(--clay));color:#fff}
 .spec-ic svg{width:26px;height:26px}
-.spec-body h4{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:1.12rem;
-  color:var(--dark);margin-bottom:10px}
-.spec-items{display:flex;flex-wrap:wrap;gap:7px 8px;list-style:none;margin:0;padding:0}
+/* Cabecera (título). En desktop no es interactiva; en mobile es el toggle. */
+.spec-head{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
+  background:none;border:0;padding:0;text-align:left;cursor:default;color:inherit;font:inherit}
+.spec-head h4{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:1.12rem;
+  color:var(--dark);margin:0}
+/* Flecha: oculta en desktop, visible solo en mobile */
+.spec-caret{display:none;flex:none;width:28px;height:28px;border-radius:50%;place-items:center;
+  color:var(--accent,var(--clay));background:color-mix(in srgb,var(--accent,var(--clay)) 10%,transparent);
+  transition:.3s var(--ease)}
+.spec-caret svg{width:15px;height:15px;transition:transform .3s var(--ease)}
+.spec-items{display:flex;flex-wrap:wrap;gap:7px 8px;list-style:none;margin:0;padding:10px 0 0}
 .spec-items li{font-size:.82rem;font-weight:500;color:var(--muted);
   background:var(--bone-2);border:1px solid var(--sand);border-radius:100px;padding:.34rem .72rem}
 @media (max-width:760px){
   .specialists-grid{grid-template-columns:1fr}
   .specialists{margin-top:44px}
+  /* Mobile: solo se ve el título; los ítems se despliegan al tocar. */
+  .spec-head{cursor:pointer}
+  .spec-caret{display:grid}
+  .spec-card.open .spec-caret svg{transform:rotate(180deg)}
+  .spec-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease)}
+  .spec-card.open .spec-panel{grid-template-rows:1fr}
+  .spec-panel .spec-items{overflow:hidden;min-height:0}
 }

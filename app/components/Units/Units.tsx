@@ -1,6 +1,6 @@
 "use client";
 
-import type { CSSProperties, ReactNode } from "react";
+import { useState, type CSSProperties, type ReactNode } from "react";
 import "./Units.css";
 import { units, specialists } from "../../lib/units";
 import { useT } from "../../lib/i18n";
@@ -86,6 +86,14 @@ function UnitVisual({ u }: { u: UnitItem }) {
 
 export default function Units() {
   const t = useT();
+  // Acordeón de especialistas (solo actúa en mobile; en desktop se ve todo).
+  const [openSpecs, setOpenSpecs] = useState<string[]>([]);
+  const toggleSpec = (k: string) =>
+    setOpenSpecs((prev) =>
+      prev.includes(k) ? prev.filter((x) => x !== k) : [...prev, k]
+    );
+  // Acordeón del mapa (solo mobile): un servicio abierto a la vez.
+  const [openUnit, setOpenUnit] = useState<string | null>(null);
   return (
     <section className="section map-sec" id="servicios">
       <div className="wrap">
@@ -148,6 +156,63 @@ export default function Units() {
           </div>
         </div>
 
+        {/* ===== Mapa como acordeón (solo mobile) ===== */}
+        <div className="map-acc">
+          {units.map((u, i) => {
+            const open = openUnit === u.key;
+            return (
+              <div
+                key={u.key}
+                className={`macc-item${open ? " open" : ""}`}
+                style={v({ "--accent": i % 2 === 0 ? "var(--wine)" : u.accent })}
+              >
+                <button
+                  type="button"
+                  className="macc-head"
+                  onClick={() => setOpenUnit(open ? null : u.key)}
+                  aria-expanded={open}
+                  data-cursor=""
+                >
+                  <span className="macc-ic" aria-hidden="true">
+                    <u.Icon />
+                  </span>
+                  <span className="macc-txt">
+                    <strong>{t.unitNames[u.key].name}</strong>
+                    <small>{t.unitNames[u.key].short}</small>
+                  </span>
+                  <span className="macc-caret" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </span>
+                </button>
+                <div className="macc-panel">
+                  <div className="macc-body">
+                    <p className="macc-intro">{u.intro}</p>
+                    <div className="macc-chips">
+                      {u.services.map((s) => (
+                        <span key={s.title}>{s.title}</span>
+                      ))}
+                    </div>
+                    <div className="macc-ctas">
+                      <a
+                        href={`/servicios/${u.slug}`}
+                        className="btn btn-primary"
+                        data-cursor=""
+                      >
+                        {t.units.verUnidad}
+                      </a>
+                      <a href="#contacto" className="macc-link" data-cursor="">
+                        {t.units.solicitar}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
         {/* ===== Red de especialistas ===== */}
         <div className="specialists">
           <div className="specialists-head">
@@ -155,25 +220,43 @@ export default function Units() {
             <p>{t.specialists.p}</p>
           </div>
           <div className="specialists-grid">
-            {specialists.map((s) => (
-              <article
-                key={s.key}
-                className="spec-card"
-                style={v({ "--accent": s.accent })}
-              >
-                <span className="spec-ic" aria-hidden="true">
-                  <s.Icon />
-                </span>
-                <div className="spec-body">
-                  <h4>{t.specialists[s.key].name}</h4>
-                  <ul className="spec-items">
-                    {t.specialists[s.key].items.map((it) => (
-                      <li key={it}>{it}</li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
+            {specialists.map((s) => {
+              const open = openSpecs.includes(s.key);
+              return (
+                <article
+                  key={s.key}
+                  className={`spec-card${open ? " open" : ""}`}
+                  style={v({ "--accent": s.accent })}
+                >
+                  <span className="spec-ic" aria-hidden="true">
+                    <s.Icon />
+                  </span>
+                  <div className="spec-body">
+                    <button
+                      type="button"
+                      className="spec-head"
+                      onClick={() => toggleSpec(s.key)}
+                      aria-expanded={open}
+                      data-cursor=""
+                    >
+                      <h4>{t.specialists[s.key].name}</h4>
+                      <span className="spec-caret" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <path d="M6 9l6 6 6-6" />
+                        </svg>
+                      </span>
+                    </button>
+                    <div className="spec-panel">
+                      <ul className="spec-items">
+                        {t.specialists[s.key].items.map((it) => (
+                          <li key={it}>{it}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>
