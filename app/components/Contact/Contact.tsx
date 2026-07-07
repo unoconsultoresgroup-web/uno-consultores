@@ -222,10 +222,11 @@ export default function Contact() {
               >
                 <option value="">{t.contact.fUnitPh}</option>
                 <option>{un.rrhh.name}</option>
+                <option>{un.seleccion.name}</option>
                 <option>{un.do.name}</option>
-                <option>{un.psico.name}</option>
-                <option>{un.legal.name}</option>
                 <option>{un.tech.name}</option>
+                <option>{t.specialists.psico.name}</option>
+                <option>{t.specialists.legal.name}</option>
                 <option>{t.contact.fUnitProj}</option>
               </select>
             </div>

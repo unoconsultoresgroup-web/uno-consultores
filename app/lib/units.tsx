@@ -1,16 +1,33 @@
 /* ============================================================
-   uno consultores — Fuente única de datos de los CINCO SERVICIOS
+   uno consultores — Fuente única de datos de los servicios
    Usada por: la sección del home (#servicios), el dropdown del nav,
    el footer y las páginas de detalle /servicios/[slug].
+
+   4 servicios PRINCIPALES (con página) + RED DE ESPECIALISTAS
+   (Psicología y Legal, como tarjetas, sin página propia).
    ============================================================ */
 import type { JSX } from "react";
 
-/* ---------- Íconos (compartidos con la sección del home) ---------- */
+/* ---------- Íconos ---------- */
 export const IconRRHH = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <circle cx="9" cy="8" r="3.2" />
     <path d="M2.5 20c0-3.6 3-5.5 6.5-5.5s6.5 1.9 6.5 5.5" />
     <path d="M17 8.5a3 3 0 0 0 0-1M19 20c0-2.6-1.2-4.3-3-5.2" />
+  </svg>
+);
+export const IconSeleccion = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <circle cx="10.5" cy="10.5" r="6.2" />
+    <path d="M15.2 15.2L21 21" />
+    <path d="M10.5 8v5M8 10.5h5" />
+  </svg>
+);
+export const IconFormacion = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
+    <path d="M12 4L2.5 9 12 14l9.5-5L12 4Z" />
+    <path d="M6.5 11v5c0 1 2.5 2.5 5.5 2.5s5.5-1.5 5.5-2.5v-5" />
+    <path d="M21.5 9v5" />
   </svg>
 );
 export const IconDO = () => (
@@ -38,14 +55,17 @@ export const IconTech = () => (
 );
 
 /* ---------- Tipos ---------- */
+export type UnitKey = "rrhh" | "seleccion" | "do" | "tech";
+export type SpecialistKey = "psico" | "legal";
+
 export interface UnitService {
   title: string;
   desc: string;
 }
 
 export interface Unit {
-  /** clave corta usada por el script de la sección del home (data-u / data-p) */
-  key: "rrhh" | "do" | "psico" | "legal" | "tech";
+  /** clave corta usada por el mapa del home (data-u / data-p) e i18n */
+  key: UnitKey;
   /** segmento de URL: /servicios/<slug> */
   slug: string;
   name: string;
@@ -65,187 +85,155 @@ export interface Unit {
   Icon: () => JSX.Element;
 }
 
-/* ---------- Datos ---------- */
+/** Especialista de la "red": tarjeta en el home, sin página propia. */
+export interface Specialist {
+  key: SpecialistKey;
+  accent: string;
+  Icon: () => JSX.Element;
+}
+
+/* ---------- Servicios principales (ES) ---------- */
 export const units: Unit[] = [
   {
     key: "rrhh",
-    slug: "recursos-humanos",
-    name: "Gestión del Talento",
-    short: "Atracción, desarrollo y desempeño",
+    slug: "gestion-de-personas",
+    name: "Gestión de Personas",
+    short: "Cultura y personas",
     accent: "#1F1F24",
-    eyebrow: "Servicio · Gestión del Talento",
-    tagline: "Atracción, desarrollo y desempeño.",
+    eyebrow: "Servicio · Gestión de Personas",
+    tagline: "Cultura y personas.",
     intro:
-      "Diseñamos e implementamos sistemas de gestión del talento que permiten atraer, desarrollar y retener a las personas adecuadas, con procesos claros, medibles y alineados a los objetivos del negocio.",
+      "Ordenamos y profesionalizamos la gestión de personas: diseñamos los procesos, fortalecemos la cultura y desarrollamos el liderazgo para que la organización crezca sobre bases sólidas.",
     highlight:
-      "Gestión del talento ordenada y medible, lista para escalar.",
+      "Profesionalizamos la gestión de personas para acompañar el crecimiento.",
     services: [
       {
-        title: "Reclutamiento y selección",
-        desc: "Definimos el perfil, evaluamos candidatos y acompañamos todo el proceso hasta incorporar a la persona adecuada para el puesto y la organización.",
+        title: "Diagnóstico organizacional",
+        desc: "Relevamos estructura, procesos y clima para identificar prioridades y un plan de mejora concreto.",
       },
       {
-        title: "Onboarding",
-        desc: "Diseñamos procesos de ingreso que reducen los tiempos de adaptación, aceleran el aprendizaje y mejoran la experiencia de incorporación.",
+        title: "Diseño de procesos de RRHH",
+        desc: "Ordenamos y documentamos los procesos clave de gestión de personas para dar previsibilidad y escala.",
       },
       {
-        title: "Gestión del desempeño",
-        desc: "Implementamos sistemas de objetivos, evaluaciones y feedback que permiten medir resultados y tomar mejores decisiones sobre desarrollo y reconocimiento.",
+        title: "Clima y cultura organizacional",
+        desc: "Medimos el clima y fortalecemos los valores y comportamientos que definen la identidad de la organización.",
       },
       {
-        title: "Gestión del talento",
-        desc: "Identificamos colaboradores con potencial y diseñamos planes de desarrollo que preparan a las personas para asumir nuevos desafíos.",
+        title: "Evaluación de desempeño",
+        desc: "Implementamos objetivos, evaluaciones y feedback para medir resultados y decidir mejor sobre el desarrollo.",
       },
       {
-        title: "Planes de carrera",
-        desc: "Diseñamos recorridos de crecimiento y criterios de promoción que brindan claridad sobre las oportunidades de desarrollo dentro de la organización.",
+        title: "Desarrollo de liderazgo",
+        desc: "Formamos y acompañamos a jefaturas y mandos medios para que conduzcan equipos con criterio.",
       },
       {
-        title: "Capacitación y desarrollo",
-        desc: "Detectamos necesidades de formación y desarrollamos programas que fortalecen habilidades técnicas, de liderazgo y de gestión.",
+        title: "Consultoría externa (HRBP)",
+        desc: "Sumamos un socio estratégico de RRHH que acompaña a la dirección en las decisiones sobre personas.",
       },
     ],
     deliverables: [
-      "Procesos de selección documentados y replicables",
-      "Tableros e indicadores de desempeño",
-      "Mapa de talento y planes de desarrollo",
-      "Bandas salariales y política de beneficios",
-      "Programa de onboarding a medida",
+      "Diagnóstico organizacional con plan de acción",
+      "Procesos de RRHH diseñados y documentados",
+      "Sistema de evaluación de desempeño",
+      "Programa de desarrollo de liderazgo",
+      "Acompañamiento HRBP como consultoría externa",
     ],
     Icon: IconRRHH,
   },
   {
-    key: "do",
-    slug: "desarrollo-organizacional",
-    name: "Desarrollo Organizacional",
-    short: "Cultura, liderazgo y transformación",
+    key: "seleccion",
+    slug: "seleccion-de-talento",
+    name: "Selección de Talento",
+    short: "Atracción de talento",
     accent: "#3C3C42",
-    eyebrow: "Servicio · Desarrollo Organizacional",
-    tagline: "Cultura, liderazgo y transformación.",
+    eyebrow: "Servicio · Selección de Talento",
+    tagline: "Atracción de talento.",
     intro:
-      "Acompañamos el crecimiento de las organizaciones fortaleciendo su cultura, desarrollando liderazgos y construyendo estructuras capaces de sostener el cambio y la evolución del negocio.",
+      "Acompañamos todo el proceso de incorporación: definimos el perfil, buscamos y evaluamos candidatos y presentamos las mejores opciones alineadas a la cultura y al negocio.",
     highlight:
-      "Crecimiento con identidad: estructura, liderazgo y cultura alineados.",
+      "Incorporamos talento alineado a la cultura y a los objetivos del negocio.",
     services: [
       {
-        title: "Diagnóstico organizacional",
-        desc: "Relevamiento de estructura, cultura y procesos con informe de hallazgos y plan de mejora.",
+        title: "Definición de perfiles",
+        desc: "Definimos junto al área el perfil, las competencias y los criterios de éxito de la búsqueda.",
       },
       {
-        title: "Estructura organizacional",
-        desc: "Diseño de organigramas, roles, responsabilidades y niveles de decisión alineados a la estrategia del negocio.",
+        title: "Reclutamiento y búsqueda",
+        desc: "Activamos los canales y hacemos sourcing para atraer a los mejores candidatos disponibles.",
       },
       {
-        title: "Cultura organizacional",
-        desc: "Definición de valores, comportamientos y prácticas que fortalecen la identidad organizacional.",
+        title: "Entrevistas por competencias",
+        desc: "Evaluamos a los candidatos en situación, con entrevistas estructuradas por competencias.",
       },
       {
-        title: "Gestión del cambio",
-        desc: "Planes de implementación y acompañamiento para facilitar la adopción de nuevas prácticas y procesos.",
+        title: "Evaluaciones psicotécnicas",
+        desc: "Sumamos evaluación profesional para respaldar la decisión con criterio técnico.",
       },
       {
-        title: "Desarrollo de líderes",
-        desc: "Programas de formación y acompañamiento para mandos medios, jefaturas y equipos de conducción.",
+        title: "Presentación de ternas",
+        desc: "Presentamos una terna final con informe comparativo para facilitar la elección.",
       },
       {
-        title: "Employee Experience",
-        desc: "Diagnóstico y mejora de la experiencia del colaborador en los principales momentos de su recorrido laboral.",
-      },
-      {
-        title: "Team Building",
-        desc: "Jornadas y actividades orientadas a fortalecer vínculos, confianza y colaboración entre equipos.",
+        title: "Onboarding de ingresos",
+        desc: "Diseñamos el ingreso para que la persona se integre rápido y con buena experiencia.",
       },
     ],
     deliverables: [
-      "Informe de diagnóstico con plan de acción",
-      "Programa de desarrollo de liderazgo",
-      "Mapa de carrera y matriz de sucesión",
-      "Organigrama y descriptivos de puesto",
-      "Propuesta de valor al empleado (EVP)",
+      "Perfiles de búsqueda definidos y validados",
+      "Proceso de reclutamiento y sourcing",
+      "Entrevistas por competencias y evaluaciones psicotécnicas",
+      "Terna final con informe comparativo",
+      "Plan de onboarding para el ingreso",
     ],
-    Icon: IconDO,
+    Icon: IconSeleccion,
   },
   {
-    key: "psico",
-    slug: "psicologia-laboral",
-    name: "Psicología Laboral",
-    short: "Evaluación y bienestar",
-    accent: "#9b3cdf",
-    eyebrow: "Servicio · Psicología Laboral",
-    tagline: "Evaluación y bienestar.",
-    intro:
-      "Aportamos evaluación profesional, análisis técnico y herramientas psicológicas para acompañar decisiones vinculadas al talento, el desempeño y el bienestar.",
-    highlight:
-      "Psicología organizacional con enfoque estratégico.",
-    services: [
-      {
-        title: "Psicotécnicos laborales",
-        desc: "Evaluaciones profesionales con respaldo técnico para identificar potencial y orientar las decisiones sobre talento.",
-      },
-      {
-        title: "Evaluación por competencias",
-        desc: "Dinámicas de evaluación por competencias que observan a la persona en situación, con devolución estructurada.",
-      },
-      {
-        title: "Mapeo de potencial",
-        desc: "Identificación de capacidades y proyección de crecimiento para planificar el desarrollo del talento.",
-      },
-    ],
-    deliverables: [
-      "Informes psicotécnicos firmados por profesional matriculado",
-      "Diseño y conducción de assessment centers",
-      "Procesos de coaching con objetivos medibles",
-      "Encuesta y reporte de clima organizacional",
-      "Plan de bienestar y acompañamiento",
-    ],
-    Icon: IconPsico,
-  },
-  {
-    key: "legal",
-    slug: "legal-laboral",
-    name: "Legal Integral",
-    short: "Cumplimiento y relaciones laborales",
+    key: "do",
+    slug: "formacion-y-desarrollo",
+    name: "Formación y Desarrollo",
+    short: "Aprendizaje y liderazgo",
     accent: "#55555C",
-    eyebrow: "Servicio · Legal Integral",
-    tagline: "Cumplimiento y relaciones laborales.",
+    eyebrow: "Servicio · Formación y Desarrollo",
+    tagline: "Aprendizaje y liderazgo.",
     intro:
-      "Combinamos experiencia jurídica laboral y gestión de recursos humanos para prevenir contingencias, asegurar el cumplimiento normativo y construir relaciones laborales sólidas y sostenibles.",
+      "Diseñamos experiencias de aprendizaje que fortalecen las habilidades técnicas, de liderazgo y de gestión que tu equipo necesita hoy y para el futuro del trabajo.",
     highlight:
-      "La gestión laboral de tu empresa, resuelta de forma integral.",
+      "Desarrollamos habilidades para el desempeño actual y el futuro del trabajo.",
     services: [
       {
-        title: "Auditorías laborales",
-        desc: "Revisión integral de legajos y documentación para detectar y corregir brechas antes de que sean un problema.",
+        title: "Capacitaciones in company",
+        desc: "Diseñamos y dictamos capacitaciones a medida de las necesidades de cada equipo.",
       },
       {
-        title: "Reglamentos internos",
-        desc: "Redacción y actualización de reglamentos internos claros y conformes a la normativa vigente.",
+        title: "Programas de liderazgo",
+        desc: "Formamos líderes con herramientas prácticas para conducir, motivar y desarrollar personas.",
       },
       {
-        title: "Asesoramiento Legal Integral",
-        desc: "Diseño de políticas de personas que ordenan la gestión y dan previsibilidad a las decisiones.",
+        title: "Comunicación y feedback",
+        desc: "Fortalecemos la comunicación y la cultura de feedback para mejorar el trabajo diario.",
       },
       {
-        title: "Relaciones laborales",
-        desc: "Gestión del vínculo con colaboradores y representantes, con foco en preservar la relación laboral.",
+        title: "Trabajo en equipo",
+        desc: "Dinámicas orientadas a fortalecer la confianza, la colaboración y el trabajo conjunto.",
       },
       {
-        title: "Procedimientos disciplinarios",
-        desc: "Acompañamiento técnico y humano en sanciones y procesos disciplinarios, minimizando el riesgo legal.",
+        title: "Tiempo y productividad",
+        desc: "Herramientas para gestionar mejor el tiempo, las prioridades y la energía del equipo.",
       },
       {
-        title: "Compliance laboral",
-        desc: "Implementación y auditoría del cumplimiento normativo para mantener a tu empresa en regla y protegida.",
+        title: "Empleabilidad y primer empleo",
+        desc: "Programas que preparan a las personas para insertarse y crecer en el mundo laboral.",
       },
     ],
     deliverables: [
-      "Modelos de contratos y documentación al día",
-      "Protocolos de desvinculación y sanciones",
-      "Programa de compliance laboral",
-      "Procesos de mediación documentados",
-      "Informe de auditoría documental con plan de regularización",
+      "Plan de capacitación a medida",
+      "Programa de desarrollo de liderazgo",
+      "Talleres de comunicación y feedback",
+      "Dinámicas de equipo y colaboración",
+      "Indicadores de impacto de la formación",
     ],
-    Icon: IconLegal,
+    Icon: IconFormacion,
   },
   {
     key: "tech",
@@ -292,6 +280,14 @@ export const units: Unit[] = [
   },
 ];
 
+/* ---------- Red de especialistas (tarjetas, sin página) ----------
+   Los textos (nombre + items) viven en i18n (t.specialists), acá solo
+   el ícono y el color de acento. */
+export const specialists: Specialist[] = [
+  { key: "psico", accent: "#9b3cdf", Icon: IconPsico },
+  { key: "legal", accent: "#55555C", Icon: IconLegal },
+];
+
 /* ---------- Contenido EN de detalle (para /servicios/[slug]) ----------
    El ES vive en el array `units` de arriba; acá solo el inglés. */
 export type UnitDetailContent = {
@@ -302,153 +298,122 @@ export type UnitDetailContent = {
   deliverables: string[];
 };
 
-export const unitDetailEn: Record<Unit["key"], UnitDetailContent> = {
+export const unitDetailEn: Record<UnitKey, UnitDetailContent> = {
   rrhh: {
-    tagline: "Attraction, development and performance.",
+    tagline: "Culture and people.",
     intro:
-      "We design and implement talent management systems that attract, develop and retain the right people, with clear, measurable processes aligned to business goals.",
-    highlight: "Talent management that's organized, measurable and ready to scale.",
-    services: [
-      {
-        title: "Recruitment & selection",
-        desc: "We define the profile, assess candidates and guide the whole process until the right person joins the role and the organization.",
-      },
-      {
-        title: "Onboarding",
-        desc: "We design onboarding processes that shorten ramp-up time, speed up learning and improve the joining experience.",
-      },
-      {
-        title: "Performance management",
-        desc: "We implement goal, review and feedback systems that measure results and inform better decisions on development and recognition.",
-      },
-      {
-        title: "Talent management",
-        desc: "We identify employees with potential and design development plans that prepare people to take on new challenges.",
-      },
-      {
-        title: "Career paths",
-        desc: "We design growth tracks and promotion criteria that bring clarity to the development opportunities within the organization.",
-      },
-      {
-        title: "Training & development",
-        desc: "We detect training needs and build programs that strengthen technical, leadership and management skills.",
-      },
-    ],
-    deliverables: [
-      "Documented, repeatable selection processes",
-      "Performance dashboards and indicators",
-      "Talent map and development plans",
-      "Salary bands and benefits policy",
-      "Tailored onboarding program",
-    ],
-  },
-  do: {
-    tagline: "Culture, leadership and transformation.",
-    intro:
-      "We support organizations' growth by strengthening their culture, developing leaders and building structures able to sustain change and business evolution.",
-    highlight: "Growth with identity: structure, leadership and culture aligned.",
+      "We bring order and professionalism to people management: we design the processes, strengthen the culture and develop leadership so the organization grows on solid ground.",
+    highlight: "We professionalize people management to support growth.",
     services: [
       {
         title: "Organizational diagnosis",
-        desc: "Assessment of structure, culture and processes with a findings report and an improvement plan.",
+        desc: "We assess structure, processes and climate to identify priorities and a concrete improvement plan.",
       },
       {
-        title: "Organizational structure",
-        desc: "Design of org charts, roles, responsibilities and decision levels aligned to the business strategy.",
+        title: "HR process design",
+        desc: "We organize and document the key people processes to bring predictability and scale.",
       },
       {
-        title: "Organizational culture",
-        desc: "Definition of values, behaviors and practices that strengthen organizational identity.",
+        title: "Climate and culture",
+        desc: "We measure climate and strengthen the values and behaviors that define the organization's identity.",
       },
       {
-        title: "Change management",
-        desc: "Implementation and support plans to ease the adoption of new practices and processes.",
+        title: "Performance management",
+        desc: "We implement goals, reviews and feedback to measure results and make better development decisions.",
       },
       {
         title: "Leadership development",
-        desc: "Training and coaching programs for middle managers, supervisors and leadership teams.",
+        desc: "We train and coach managers and team leads to lead their teams with sound judgment.",
       },
       {
-        title: "Employee experience",
-        desc: "Diagnosis and improvement of the employee experience across the key moments of their journey.",
-      },
-      {
-        title: "Team building",
-        desc: "Sessions and activities to strengthen bonds, trust and collaboration across teams.",
+        title: "External consulting (HRBP)",
+        desc: "We add a strategic HR partner who supports leadership in people decisions.",
       },
     ],
     deliverables: [
-      "Diagnosis report with an action plan",
+      "Organizational diagnosis with an action plan",
+      "Designed and documented HR processes",
+      "Performance management system",
       "Leadership development program",
-      "Career map and succession matrix",
-      "Org chart and job descriptions",
-      "Employee value proposition (EVP)",
+      "HRBP support as external consulting",
     ],
   },
-  psico: {
-    tagline: "Assessment and wellbeing.",
+  seleccion: {
+    tagline: "Attracting talent.",
     intro:
-      "We provide professional assessment, technical analysis and psychological tools to support decisions related to talent, performance and wellbeing.",
-    highlight: "Organizational psychology with a strategic focus.",
+      "We support the entire hiring process: we define the profile, source and assess candidates and present the best options aligned to culture and business.",
+    highlight: "We bring in talent aligned to the culture and the business goals.",
     services: [
+      {
+        title: "Profile definition",
+        desc: "We define the profile, competencies and success criteria of the search together with the area.",
+      },
+      {
+        title: "Recruitment & sourcing",
+        desc: "We activate channels and source to attract the best available candidates.",
+      },
+      {
+        title: "Competency interviews",
+        desc: "We assess candidates in context, with structured competency-based interviews.",
+      },
       {
         title: "Psychometric assessments",
-        desc: "Professional evaluations with technical backing to identify potential and inform talent decisions.",
+        desc: "We add professional evaluation to back the decision with technical criteria.",
       },
       {
-        title: "Competency-based assessment",
-        desc: "Competency-based evaluation dynamics that observe the person in context, with structured feedback.",
+        title: "Shortlist presentation",
+        desc: "We present a final shortlist with a comparative report to ease the choice.",
       },
       {
-        title: "Potential mapping",
-        desc: "Identification of capabilities and growth projection to plan talent development.",
+        title: "Onboarding",
+        desc: "We design the joining process so the person integrates fast and with a good experience.",
       },
     ],
     deliverables: [
-      "Psychometric reports signed by a licensed professional",
-      "Design and facilitation of assessment centers",
-      "Coaching processes with measurable goals",
-      "Organizational climate survey and report",
-      "Wellbeing and support plan",
+      "Defined and validated search profiles",
+      "Recruitment and sourcing process",
+      "Competency interviews and psychometric assessments",
+      "Final shortlist with comparative report",
+      "Onboarding plan for the new hire",
     ],
   },
-  legal: {
-    tagline: "Compliance and labor relations.",
+  do: {
+    tagline: "Learning and leadership.",
     intro:
-      "We combine labor-law expertise and HR management to prevent contingencies, ensure regulatory compliance and build solid, sustainable labor relations.",
-    highlight: "Your company's labor management, solved end to end.",
+      "We design learning experiences that strengthen the technical, leadership and management skills your team needs today and for the future of work.",
+    highlight: "We build skills for today's performance and the future of work.",
     services: [
       {
-        title: "Labor audits",
-        desc: "Comprehensive review of records and documentation to detect and fix gaps before they become a problem.",
+        title: "In-company training",
+        desc: "We design and deliver training tailored to each team's needs.",
       },
       {
-        title: "Internal policies",
-        desc: "Drafting and updating of clear internal regulations compliant with current legislation.",
+        title: "Leadership programs",
+        desc: "We develop leaders with practical tools to lead, motivate and grow people.",
       },
       {
-        title: "Comprehensive legal advisory",
-        desc: "Design of people policies that bring order to management and predictability to decisions.",
+        title: "Communication & feedback",
+        desc: "We strengthen communication and a feedback culture to improve daily work.",
       },
       {
-        title: "Labor relations",
-        desc: "Management of the relationship with employees and representatives, focused on preserving the working relationship.",
+        title: "Teamwork",
+        desc: "Dynamics aimed at strengthening trust, collaboration and joint work.",
       },
       {
-        title: "Disciplinary procedures",
-        desc: "Technical and human support in sanctions and disciplinary processes, minimizing legal risk.",
+        title: "Time & productivity",
+        desc: "Tools to better manage time, priorities and the team's energy.",
       },
       {
-        title: "Labor compliance",
-        desc: "Implementation and audit of regulatory compliance to keep your company in order and protected.",
+        title: "Employability & first job",
+        desc: "Programs that prepare people to enter and grow in the working world.",
       },
     ],
     deliverables: [
-      "Contract templates and up-to-date documentation",
-      "Termination and sanction protocols",
-      "Labor compliance program",
-      "Documented mediation processes",
-      "Document audit report with a remediation plan",
+      "Tailored training plan",
+      "Leadership development program",
+      "Communication and feedback workshops",
+      "Team and collaboration dynamics",
+      "Training impact indicators",
     ],
   },
   tech: {

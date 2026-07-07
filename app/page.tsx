@@ -1,6 +1,7 @@
 import CursorUI from "./components/CursorUI";
 import Nav from "./components/Nav";
-import Hero from "./components/Hero";
+// import Hero from "./components/Hero"; // hero anterior (guardado, sin uso)
+import Hero3D from "./components/Hero3D";
 import Marquee from "./components/Marquee";
 import GlobeSection from "./components/GlobeSection";
 import About from "./components/About";
@@ -17,8 +18,9 @@ export default function Home() {
   return (
     <>
       <CursorUI />
-      <Nav />
-      <Hero />
+      <Nav light />
+      {/* <Hero /> — hero anterior guardado en components/Hero */}
+      <Hero3D />
       {/* <Marquee /> */}
       <GlobeSection />
       <About />

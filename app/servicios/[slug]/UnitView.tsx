@@ -26,9 +26,8 @@ const Chevron = () => (
 
 const heroImg: Record<string, string> = {
   rrhh: "/unit-rrhh.jpg",
+  seleccion: "/hero-talento.jpg",
   do: "/unit-do.jpg",
-  psico: "/unit-psico.jpg",
-  legal: "/unit-legal.jpg",
   tech: "/unit-tech.jpg",
 };
 
@@ -64,7 +63,7 @@ export default function UnitView({ slug }: { slug: string }) {
       {/* ===== Hero de la unidad ===== */}
       <section
         className="u-hero u-hero--photo"
-        style={v({ "--hero-img": `url(${heroImg[key]})` })}
+        style={v({ "--hero-img": `url(${heroImg[key] ?? "/hero.jpg"})` })}
       >
         <div className="u-hero-lines" aria-hidden="true"></div>
         <div className="wrap">

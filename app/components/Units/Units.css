@@ -52,6 +52,24 @@
 @keyframes grow2{from{height:72px}to{height:114px}}
 @keyframes grow3{from{height:102px}to{height:142px}}
 
+/* SELECCIÓN · lupa 3D buscando talento (violeta) */
+.o-search{position:relative;width:150px;height:150px;transform:rotateX(6deg) rotateY(-12deg);
+  animation:searchFloat 6s ease-in-out infinite alternate}
+@keyframes searchFloat{0%{transform:rotateX(6deg) rotateY(-16deg) translateY(-6px)}
+  100%{transform:rotateX(6deg) rotateY(8deg) translateY(6px)}}
+.o-search .os-lens{position:absolute;left:22px;top:18px;width:92px;height:92px;border-radius:50%;
+  border:11px solid;border-color:#b98bff #8a4be0 #6e3dd6 #8a4be0;
+  background:radial-gradient(circle at 34% 30%,rgba(255,255,255,.5),rgba(178,102,240,.18) 60%,transparent 72%);
+  box-shadow:0 18px 34px -14px rgba(110,61,214,.7),inset 0 0 22px rgba(138,75,224,.35)}
+.o-search .os-handle{position:absolute;left:100px;top:100px;width:20px;height:54px;border-radius:12px;
+  background:linear-gradient(140deg,#b98bff,#6e3dd6);transform:rotate(-45deg);transform-origin:top center;
+  box-shadow:0 12px 22px -10px rgba(110,61,214,.7)}
+.o-search .os-spark{position:absolute;border-radius:50%;background:#fff;
+  box-shadow:0 0 10px rgba(255,255,255,.9);animation:osSpark 2.4s ease-in-out infinite}
+.o-search .os-spark.s1{left:50px;top:42px;width:10px;height:10px}
+.o-search .os-spark.s2{left:76px;top:68px;width:7px;height:7px;animation-delay:-1.2s}
+@keyframes osSpark{0%,100%{opacity:.25;transform:scale(.7)}50%{opacity:1;transform:scale(1)}}
+
 /* PSICOLOGÍA · cerebro ilustrado (SVG) animado (violeta) */
 .o-brain{position:relative;width:184px;height:148px;animation:brainPulse 4.2s ease-in-out infinite}
 @keyframes brainPulse{0%,100%{transform:scale(.98) translateY(1px)}50%{transform:scale(1.03) translateY(-1px)}}
@@ -100,7 +118,8 @@
 @keyframes gvSpark{0%,52%{opacity:0;transform:scale(.4)}60%{opacity:.95;transform:scale(1)}80%,100%{opacity:0;transform:scale(1.4)}}
 
 @media (prefers-reduced-motion:reduce){
-  .o-people,.fig,.o-cols,.o-col,.o-brain,.o-brain .syn,.o-gavel .gv-tool,.o-gavel .gv-spark{animation:none}
+  .o-people,.fig,.o-cols,.o-col,.o-brain,.o-brain .syn,.o-gavel .gv-tool,.o-gavel .gv-spark,
+  .o-search,.o-search .os-spark{animation:none}
 }
 
 /* ===== TECNOLOGÍA · única con impronta tecnológica (pantalla holográfica neón) ===== */
@@ -208,4 +227,29 @@
 
 @media (max-width:980px){
   .map{grid-template-columns:1fr;gap:24px}
+}
+
+/* ===== Red de especialistas ===== */
+.specialists{margin-top:60px}
+.specialists-head{text-align:center;margin-bottom:26px}
+.specialists-head .eyebrow{justify-content:center}
+.specialists-head p{color:var(--muted);font-size:1rem;margin-top:2px}
+.specialists-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.spec-card{display:flex;gap:18px;align-items:flex-start;background:var(--card);
+  border:1px solid var(--sand);border-radius:var(--radius);padding:26px 28px;transition:.4s var(--ease)}
+.spec-card:hover{transform:translateY(-4px);border-color:var(--accent,var(--clay));
+  box-shadow:0 26px 52px -34px rgba(36,27,23,.4)}
+.spec-ic{width:52px;height:52px;border-radius:14px;flex:none;display:grid;place-items:center;
+  background:color-mix(in srgb,var(--accent,var(--clay)) 12%,transparent);
+  color:var(--accent,var(--clay));transition:.3s}
+.spec-card:hover .spec-ic{background:var(--accent,var(--clay));color:#fff}
+.spec-ic svg{width:26px;height:26px}
+.spec-body h4{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:1.12rem;
+  color:var(--dark);margin-bottom:10px}
+.spec-items{display:flex;flex-wrap:wrap;gap:7px 8px;list-style:none;margin:0;padding:0}
+.spec-items li{font-size:.82rem;font-weight:500;color:var(--muted);
+  background:var(--bone-2);border:1px solid var(--sand);border-radius:100px;padding:.34rem .72rem}
+@media (max-width:760px){
+  .specialists-grid{grid-template-columns:1fr}
+  .specialists{margin-top:44px}
 }

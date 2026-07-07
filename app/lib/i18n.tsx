@@ -274,11 +274,32 @@ export const dict = {
         "Uy, no pudimos enviar tu consulta. Probá de nuevo en un momento o escribinos a unoconsultoresgroup@gmail.com.",
     },
     unitNames: {
-      rrhh: { name: "Gestión del Talento", short: "Atracción, desarrollo y desempeño" },
-      do: { name: "Desarrollo Organizacional", short: "Cultura, liderazgo y transformación" },
-      psico: { name: "Psicología Laboral", short: "Evaluación y bienestar" },
-      legal: { name: "Legal Integral", short: "Cumplimiento y relaciones laborales" },
+      rrhh: { name: "Gestión de Personas", short: "Cultura y personas" },
+      seleccion: { name: "Selección de Talento", short: "Atracción de talento" },
+      do: { name: "Formación y Desarrollo", short: "Aprendizaje y liderazgo" },
       tech: { name: "Tecnología y Producto", short: "Productos digitales, automatización e IA" },
+    },
+    specialists: {
+      eyebrow: "Red de especialistas",
+      p: "Se incorporan según la necesidad de cada proyecto.",
+      psico: {
+        name: "Psicología Organizacional",
+        items: [
+          "Evaluaciones psicotécnicas",
+          "Assessment para selección",
+          "Desarrollo de talento",
+          "Clima y bienestar",
+        ],
+      },
+      legal: {
+        name: "Asesoramiento Legal Laboral",
+        items: [
+          "Relaciones laborales",
+          "Revisión de procesos y documentación",
+          "Acompañamiento en decisiones",
+          "Prevención de riesgos",
+        ],
+      },
     },
     unitPage: {
       serviceLabel: "Servicio",
@@ -576,11 +597,32 @@ export const dict = {
         "Oops, we couldn't send your inquiry. Please try again in a moment or email us at unoconsultoresgroup@gmail.com.",
     },
     unitNames: {
-      rrhh: { name: "Talent Management", short: "Attraction, development and performance" },
-      do: { name: "Organizational Development", short: "Culture, leadership and transformation" },
-      psico: { name: "Workplace Psychology", short: "Assessment and wellbeing" },
-      legal: { name: "Labor Law", short: "Compliance and labor relations" },
+      rrhh: { name: "People Management", short: "Culture and people" },
+      seleccion: { name: "Talent Acquisition", short: "Attracting talent" },
+      do: { name: "Training & Development", short: "Learning and leadership" },
       tech: { name: "Technology & Product", short: "Digital products, automation and AI" },
+    },
+    specialists: {
+      eyebrow: "Specialist network",
+      p: "Brought in according to each project's needs.",
+      psico: {
+        name: "Organizational Psychology",
+        items: [
+          "Psychometric assessments",
+          "Assessment for selection",
+          "Talent development",
+          "Climate & wellbeing",
+        ],
+      },
+      legal: {
+        name: "Labor Legal Advisory",
+        items: [
+          "Labor relations",
+          "Process & documentation review",
+          "Support in decisions",
+          "Risk prevention",
+        ],
+      },
     },
     unitPage: {
       serviceLabel: "Service",
