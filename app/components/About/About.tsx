@@ -16,10 +16,12 @@ export default function About() {
         <div className="about-visual">
           <div className="about-photo">
             <img
-              src="/about-nosotros.png"
+              src="/about-nosotros.webp"
               alt={t.about.photoAlt}
               width={1024}
-              height={1536}
+              height={1275}
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>

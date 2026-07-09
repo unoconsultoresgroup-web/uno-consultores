@@ -1,9 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import "./Hero3D.css";
-import HeroCanvas from "./HeroCanvas";
 import { useLang, useT } from "../../lib/i18n";
+
+// three.js es pesado (~600 KB) y solo decora el fondo. Lo cargamos de forma
+// diferida (sin SSR) para que NO bloquee el render inicial ni la hidratación:
+// así bajan drásticamente el TBT y el LCP. El degradado del hero se ve al
+// instante; el canvas 3D aparece encima cuando termina de cargar.
+const HeroCanvas = dynamic(() => import("./HeroCanvas"), { ssr: false });
 
 /**
  * Hero con fondo de animación 3D (three.js) a pantalla completa y títulos que

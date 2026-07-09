@@ -1,8 +1,12 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import "./GlobeSection.css";
-import Globe from "./Globe";
 import { useT } from "../../lib/i18n";
+
+// El globo usa cobe (WebGL) y está debajo del pliegue. Lo cargamos de forma
+// diferida (sin SSR) para no sumar JS al arranque de la página.
+const Globe = dynamic(() => import("./Globe"), { ssr: false });
 
 const ICONS = [
   // cobertura nacional e internacional

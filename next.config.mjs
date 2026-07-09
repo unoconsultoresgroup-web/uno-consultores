@@ -6,6 +6,12 @@ const nextConfig = {
   // comportamiento 100% idéntico al HTML original.
   reactStrictMode: false,
 
+  // Sirve imágenes en formatos modernos (mucho más livianos) cuando el
+  // navegador los soporta, vía next/image.
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
+
   // La ruta /unidades/[slug] pasó a llamarse /servicios/[slug].
   // Redirigimos permanentemente los enlaces viejos para no perder SEO ni
   // romper marcadores existentes.
