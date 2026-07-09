@@ -46,7 +46,7 @@
 }
 .cookie-policy__cat strong{
   display:block;
-  font-family:'Fraunces',serif;
+  font-family:var(--font-fraunces),serif;
   color:var(--dark);
   margin-bottom:.4rem;
 }

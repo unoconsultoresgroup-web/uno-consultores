@@ -4,7 +4,7 @@
 .stat{text-align:center;padding:26px;border-radius:18px;background:var(--card);border:1px solid var(--sand);transition:.4s var(--ease);
   box-shadow:0 16px 36px -28px rgba(36,27,23,.35)}
 .stat:hover{transform:translateY(-6px);border-color:var(--clay)}
-.stat .num{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:clamp(2.4rem,4.6vw,3.5rem);color:var(--wine);line-height:1}
+.stat .num{font-family:var(--font-hanken),sans-serif;font-weight:700;font-size:clamp(2.4rem,4.6vw,3.5rem);color:var(--wine);line-height:1}
 .stat .num .suf{color:var(--clay)}
 .stat .lbl{margin-top:.6rem;font-size:.9rem;color:var(--muted);font-weight:500}
 .stat .bar{margin-top:14px;height:4px;border-radius:4px;background:var(--bone-3);overflow:hidden}

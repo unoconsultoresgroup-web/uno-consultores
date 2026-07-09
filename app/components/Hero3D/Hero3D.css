@@ -64,7 +64,7 @@
   background: var(--wine-glow);
 }
 .hero3d-title {
-  font-family: "Fraunces", serif;
+  font-family: var(--font-fraunces), serif;
   font-weight: 500;
   font-size: clamp(2.5rem, 6.2vw, 5.1rem);
   line-height: 1.04;

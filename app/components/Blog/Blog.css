@@ -8,7 +8,7 @@
 .post .cover.c3{background:linear-gradient(180deg,rgba(15,15,17,.12),rgba(15,15,17,.7)),url('/blog-3.jpg') center/cover no-repeat}
 .post .cover span{position:absolute;bottom:14px;left:18px;color:#fff;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;text-shadow:0 1px 4px rgba(0,0,0,.4)}
 .post .body{padding:24px}
-.post .body h4{font-size:1.12rem;font-family:'Fraunces';margin-bottom:.5rem}
+.post .body h4{font-size:1.12rem;font-family:var(--font-fraunces);margin-bottom:.5rem}
 .post .body p{font-size:.88rem;color:var(--muted)}
 .post .body .read{margin-top:14px;font-size:.82rem;font-weight:600;color:var(--wine)}
 

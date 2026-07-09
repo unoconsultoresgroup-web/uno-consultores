@@ -83,7 +83,7 @@
 }
 .chatbot-head__title {
   display: block;
-  font-family: "Fraunces", serif;
+  font-family: var(--font-fraunces), serif;
   font-size: 1.02rem;
   font-weight: 600;
   line-height: 1.1;

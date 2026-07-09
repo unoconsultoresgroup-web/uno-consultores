@@ -4,6 +4,6 @@
   border-top:1px solid rgba(245,241,232,.1);border-bottom:1px solid rgba(245,241,232,.1)}
 .marquee .track{display:inline-flex;animation:scrollX 28s linear infinite;will-change:transform}
 .marquee:hover .track{animation-play-state:paused}
-.marquee span{font-family:'Fraunces',serif;font-size:1.25rem;text-transform:capitalize;padding:0 28px;display:inline-flex;align-items:center;gap:28px}
+.marquee span{font-family:var(--font-fraunces),serif;font-size:1.25rem;text-transform:capitalize;padding:0 28px;display:inline-flex;align-items:center;gap:28px}
 .marquee span::after{content:"✦";font-style:normal;color:var(--clay-soft);font-size:.8rem}
 @keyframes scrollX{to{transform:translateX(-50%)}}

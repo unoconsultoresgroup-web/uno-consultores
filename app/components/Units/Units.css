@@ -7,7 +7,7 @@
   border:1px solid var(--sand);background:var(--card);transition:.35s var(--ease)}
 .map-item .mi-ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;flex:none;background:var(--bone-2);color:var(--accent,var(--clay));transition:.3s}
 .map-item .mi-ic svg{width:24px;height:24px}
-.map-item h4{color:var(--dark);font-family:'Hanken Grotesk';font-weight:700;font-size:1.05rem;margin:0}
+.map-item h4{color:var(--dark);font-family:var(--font-hanken);font-weight:700;font-size:1.05rem;margin:0}
 .map-item p{font-size:.8rem;color:var(--muted);margin:0}
 .map-item.on,.map-item:hover{background:var(--bone-2);border-color:var(--accent,var(--clay));transform:translateX(6px)}
 .map-item.on .mi-ic{background:var(--accent,var(--clay));color:#fff}
@@ -237,7 +237,7 @@
 .macc-item.open .macc-ic{background:var(--accent,var(--wine));color:#fff}
 .macc-ic svg{width:24px;height:24px}
 .macc-txt{flex:1;min-width:0;display:flex;flex-direction:column}
-.macc-txt strong{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:1.02rem;
+.macc-txt strong{font-family:var(--font-hanken),sans-serif;font-weight:700;font-size:1.02rem;
   color:var(--dark);line-height:1.25}
 .macc-txt small{font-size:.82rem;color:var(--muted)}
 .macc-caret{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
@@ -280,7 +280,7 @@
 /* Cabecera (título). En desktop no es interactiva; en mobile es el toggle. */
 .spec-head{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
   background:none;border:0;padding:0;text-align:left;cursor:default;color:inherit;font:inherit}
-.spec-head h4{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:1.12rem;
+.spec-head h4{font-family:var(--font-hanken),sans-serif;font-weight:700;font-size:1.12rem;
   color:var(--dark);margin:0}
 /* Flecha: oculta en desktop, visible solo en mobile */
 .spec-caret{display:none;flex:none;width:28px;height:28px;border-radius:50%;place-items:center;

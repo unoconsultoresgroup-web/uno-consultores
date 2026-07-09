@@ -31,7 +31,7 @@
 
 .cookie-bar__title{
   display:block;
-  font-family:'Fraunces',serif;
+  font-family:var(--font-fraunces),serif;
   font-size:1.05rem;
   color:var(--bone);
   margin-bottom:.25rem;

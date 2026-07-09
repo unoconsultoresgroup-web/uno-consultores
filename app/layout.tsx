@@ -1,6 +1,23 @@
 import type { Metadata, Viewport } from "next";
 import { cookies } from "next/headers";
+import { Fraunces, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
+
+// Fuentes auto-hospedadas con next/font: se sirven desde nuestro propio
+// dominio (sin petición bloqueante a fonts.googleapis.com ni DNS extra) y con
+// font-display: swap automático. Exponemos cada una como variable CSS.
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-fraunces",
+});
+
+const hanken = Hanken_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-hanken",
+});
 import { LangProvider } from "./lib/i18n";
 import CookieConsent from "./components/CookieConsent";
 import GtmConsent from "./components/GtmConsent";
@@ -109,18 +126,8 @@ export default async function RootLayout({
   const initialLang: Lang = cookieLang === "en" ? "en" : "es";
 
   return (
-    <html lang={initialLang}>
+    <html lang={initialLang} className={`${fraunces.variable} ${hanken.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin=""
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
